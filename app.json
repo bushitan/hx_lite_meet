@@ -1,0 +1,68 @@
+{
+    "pages": [
+        "pages/agenda/agenda",
+        "pages/article_text/article_text",
+        "pages/article_video/article_video",
+        "pages/news/news",
+        "pages/meeting_self/meeting_self",
+        "pages/map_info/map_info",
+        "pages/map/map",
+        "pages/my/my",
+        "pages/guest/guest",
+        "pages/roster_self/roster_self",
+        
+        "pages/ztest/ztest"
+        
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#151515",
+        "backgroundTextStyle": "light",
+        "navigationBarTitleText": "华讯会务",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": "false"
+    },
+    "tabBar": {
+        "backgroundColor": "#fcfcfc",
+        "color": "#b3b3b3",
+        "selectedColor": "#212121",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/agenda/agenda",
+                "text": "日程",
+                "iconPath": "images/info_unselect.png",
+                "selectedIconPath": "images/info_select.png"
+            },
+            {
+                "pagePath": "pages/guest/guest",
+                "text": "嘉宾",
+                "iconPath": "images/match_unselect1.png",
+                "selectedIconPath": "images/match_select1.png"
+            },
+            {
+                "pagePath": "pages/news/news",
+                "text": "新闻",
+                "iconPath": "images/meet_unselect.png",
+                "selectedIconPath": "images/meet_select.png"
+            },
+            {
+                "pagePath": "pages/map/map",
+                "text": "地图",
+                "iconPath": "images/roster_unselect.png",
+                "selectedIconPath": "images/roster_select.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我",
+                "iconPath": "images/my_unselect.png",
+                "selectedIconPath": "images/my_select.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 30000,
+        "uploadFile": 30000,
+        "downloadFile": 15000
+    },
+    "debug": true
+}

@@ -1,0 +1,33 @@
+<!--pages/news/news.wxml-->
+<view class="page"  >
+    <scroll-view  class='roll__scroll_view' scroll-y="true" bindscrolltolower="scrollBottom" > 
+     <view class="xx_menu ">
+            <view  url="" class="xx_menu__node " >
+                <view class="xx_menu__node_name xx_line__hx_left">参会嘉宾</view>
+            </view>
+        </view>
+        <view class="">
+            <import src="../../template/roll.wxml"/>
+            <template is="cover_guest_default" data="{{articleList: articleList}}"/>
+             <template is="loading" data="{{isMore:isMore}}"/>  
+        </view>
+    </scroll-view> 
+</view>
+<template name="cover_guest_default">
+    <block wx:for="{{articleList}}" >
+        <view class='xx_list ' catchtap="toRosterDetail" data-id="{{item.roster_id}}">
+            <view class='xx_list__node xx_flex'>
+                <view class='xx_list__logo_react'  >
+                    <image  src="{{item.cover_url}}" ></image>
+                </view>
+                <view>
+                    <view class='xx_list__title '>{{item.guest_name}}</view>
+                    <!-- <view class='xx_list__title '>伊斯卡·阿尔福</view> -->
+                    <view class='xx_list__summery '>{{item.company}}</view>
+                    <view class='xx_list__summery '>{{item.introduction}}</view>
+                </view>
+            </view>
+            <view class='xx_line__gray'></view> 
+        </view>
+    </block>
+</template>

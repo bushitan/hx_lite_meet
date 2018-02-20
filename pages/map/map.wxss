@@ -1,0 +1,18 @@
+/* pages/map/map.wxss */
+
+.tab{
+    display: flex;
+    flex-direction: column;
+}
+
+map{
+    width: 750rpx;
+    height: 650rpx;
+}
+/* .tab image{} */
+.tab .word{
+    margin: 0 0 20px 10px; 
+    line-height: 16pt;
+    font-size: 11pt;
+    text-align: left;
+}

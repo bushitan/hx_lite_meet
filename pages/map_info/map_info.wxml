@@ -1,0 +1,40 @@
+<!--pages/map_info/map_info.wxml-->
+
+<view>
+    <view class='cover' >
+        <image class='cover' src='http://qiniu.308308.com/meet_map1.jpg'></image>
+    </view>
+    <view class='xx_p_all15 xx_bg__white'>
+        <view class='info_title'>广州塔</view>
+        <view class='info_des xx_m_t4'>城市</view>
+    </view>
+
+    <view  style='height:10px;' ></view>   
+    <view class="xx_menu ">
+        <view catchtap="toMember" url="" class="xx_menu__node " hover-class="xx_active">
+            <image  class="xx_menu__node_icon_lite" src="../../images/icon_location.png"></image>
+            <view class="xx_menu__node_name ">阅江西路22号首层</view>
+            <view class=" xx_menu__node_access xx_text__right"></view>
+        </view>
+        <view class='xx_line__gray'></view>
+        <view catchtap="toMember" url="" class="xx_menu__node " hover-class="xx_active">
+            <image  class="xx_menu__node_icon_lite" src="../../images/icon_time.png"></image>
+            <view class="xx_menu__node_name">00:00 - 22:00</view>
+            <view class=" xx_menu__node_access xx_text__right"></view>
+        </view>
+        <view class='xx_line__gray'></view>
+        <view catchtap="toMember" url="" class="xx_menu__node " hover-class="xx_active">
+            <image  class="xx_menu__node_icon_lite" src="../../images/icon_phone.png"></image>
+            <view class="xx_menu__node_name">020-89338222</view>
+            <view class=" xx_menu__node_access xx_text__right"></view>
+        </view>
+    </view>
+    <view  style='height:10px;' ></view>   
+
+    <view class='xx_p_all15 xx_bg__white'>
+        <view class='info_summary'>简介</view>
+        <text class='xx_f_11 xx_m_t8'> 中文名为“广州塔”。世界大多数电视塔均以地名命名，广州电视塔也需要使用地名命名，因为有海外调查资料显示在纯粹的老外中，对中国城市的了解主要是北京和上海，对广州比较陌生，时常不知广州在中国何处。因此，广州电视塔的命名不仅是命名的问题，应该承载向全世界传播“广州”概念的要素。
+英文名为。英文名不用是因为这个名称在西文语境中比较陌生，发音也比较别扭。更为重要的是，在中国对外开放通商历史中，作为海上丝绸之路的起源和起点，广州被世人所认识的英文名称一直是“Canton”。“Canton”既指广州，也指广东，广东话、广州人、广东人在英文中都是“Cantonese”。
+        </text>
+    </view>
+</view>
