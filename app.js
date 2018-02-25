@@ -1,6 +1,6 @@
 //app.js
 var API = require('utils/api.js');
-var Key = require('utils/storage_key.js');
+var KEY = require('utils/key.js');
 var g
 var GP
 App({
@@ -73,11 +73,11 @@ App({
         if (GP.globalData.isLogin == true)  //已经登陆，执行初始化
             getCurrentPages()[0].onInit(options)  
         else {  //未登录 重新登录
-            console.log("session:", wx.getStorageSync('session'))
+            console.log("session:", wx.getStorageSync(KEY.SESSION))
             wx.login
                 ({
                     success: function (res) {
-                        var _session = wx.getStorageSync(GP.KEY.SESSION)
+                        var _session = wx.getStorageSync(KEY.SESSION)
                         if (!_session) //检查session,不存在，为false
                             _session = "false"
                         console.log(res.code)
@@ -90,30 +90,25 @@ App({
     myLogin(js_code, session, options){
         wx.request
             ({
-                url: API.MY_LOGIN,
+                url: API.MEET_LOGIN,
                 method: "GET",
                 data: {
                     js_code: js_code,
-                    session: session,
+                    meet_session: session,
                 },
                 success: function (res) {
                     var object = res.data
-                    console.log("success:")
-                    console.log(res)
-                    GP.globalData.tagMatrix = object.tag_matrix
-                    GP.globalData.tagFatherList = object.tag_father_list
-                    GP.globalData.user_id = object.user_id
-                    GP.globalData.logo = object.logo
-                    GP.globalData.nick_name = object.nick_name
-                    GP.globalData.userMemberList = object.user_member_list
-                    console.log(object.tag_matrix)
-                    //初始化静态变量
-                    // GP.STATIC = res.data.util
-                    wx.setStorageSync('session', res.data.session)
-                    getCurrentPages()[0].onInit(options)  //Todo 初始化页面、目录
+                    wx.setStorageSync(KEY.SESSION, res.data.dict_user.session)
+                    if (res.data.dict_current_meet == ""){
+                        wx.showModal({
+                            title: '会议未召开',
+                        })
+                        return 
+                    }
 
-                    GP.globalData.isLogin = true
-                    //暂时专供抢画后保存图片用，日后与login合体          
+                    wx.setStorageSync(KEY.MEET_CURRENT, res.data.dict_current_meet)
+                    getCurrentPages()[0].onInit(options)  //Todo 初始化页面、目录
+                    GP.globalData.isLogin = true        
                 },
                 fail: function (res) {
                     wx.showModal({

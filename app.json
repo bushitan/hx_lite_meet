@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/agenda/agenda",
+        "pages/sign/sign",
         "pages/article_text/article_text",
         "pages/article_video/article_video",
         "pages/news/news",
@@ -19,7 +20,7 @@
         "backgroundTextStyle": "light",
         "navigationBarTitleText": "华讯会务",
         "navigationBarTextStyle": "white",
-        "enablePullDownRefresh": "false"
+        "enablePullDownRefresh": false
     },
     "tabBar": {
         "backgroundColor": "#fcfcfc",
