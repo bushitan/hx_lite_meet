@@ -91,13 +91,13 @@ function RequestScroll(start = 0, range = 10) {
         data['start_index'] = this.start
         data['end_index'] = this.start + this.range
         var that = this
-        API.Request({
+        _Request({
             'url': url,
             'data': data,
             'success': function (res) {
-                this.start = this.start + this.range //文章索引增加
-                // that._success() 
-                if (res.data.article_list.length < this.range)
+                // this.start = this.start + this.range //文章索引增加
+                that._success() 
+                if (res.data.article_list.length < that.range)
                     hack.success(res, false) //没有文章
                 else
                     hack.success(res, true) //还有文章
@@ -112,9 +112,9 @@ function RequestScroll(start = 0, range = 10) {
             // },
         })
     }
-    // this._success = function () {
-    //     this.start = this.start + this.range //文章索引增加
-    // }
+    this._success = function () {
+        this.start = this.start + this.range //文章索引增加
+    }
 }
 
 

@@ -1,0 +1,29 @@
+<!--components/im/im.wxml-->
+
+<template is="time" />
+<template is="other" />
+<template is="self" />
+
+
+
+
+<template name="time">
+    <view class='time'>
+        <label>下午5:36</label>
+    </view>
+</template>
+
+
+<template name="other">
+    <view class='left'>
+        <image src='../../images/logo1.gif'></image>
+        <label  class='word'>shdsaii胡搜费hi都是废话度更换开发的开关机会对付卡更换开</label>
+    </view>
+</template>
+
+<template name="self">
+    <view class='right'>
+        <label  class='word'>shds晒得胡搜费hi都是废话度更换开发的开关机会对付卡更换开发的aii</label>
+        <image  src='../../images/logo1.gif'></image>
+    </view>
+</template>

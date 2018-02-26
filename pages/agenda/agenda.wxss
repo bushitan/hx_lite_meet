@@ -15,7 +15,9 @@
     overflow:scroll;
 }
 
-
+.tab{
+    background-color: #ffffff;
+}
 
 
 

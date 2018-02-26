@@ -1,0 +1,45 @@
+/* components/im/im.wxss */
+
+.left , .right{
+    display: flex;
+    align-items: flex-start;
+    margin-top:5px; 
+    
+}
+
+image{
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+    flex-basis:24px;
+}
+.time{
+    display: flex;
+    justify-content: center;
+    margin: 5px ;
+}
+.time label{
+    background-color: #eee;
+    color: #888;
+    font-size: 9pt;
+    padding: 5px;
+}
+.word{
+    background-color: #eee;
+    padding: 6px;
+    font-size: 11pt;
+    border-radius: 3px;
+    width: 500rpx;
+}
+
+.left label{
+    background-color: #eee;
+}
+
+
+.right{
+    justify-content:flex-end ;
+}
+.right label{
+    background-color: #1AAD19;
+}

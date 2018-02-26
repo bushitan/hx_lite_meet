@@ -9,21 +9,10 @@ Page({
     data: {
     },
 
-    toXXArticle() {
-        var url = '../article_text/article_text?art_id=220'
-        wx.navigateTo({
-            url: url
-        })
-    },
-
     //页面onload
     onLoad: function (options) {
         GP = this
         action_cover = new ActionCover.ActionCover(GP)
-        // if (APP.globalData.isLogin == true)
-        //     GP.onInit(options)
-        // else
-        //     APP.login(options)
         GP.updateArticleList()
     },
 
@@ -37,10 +26,7 @@ Page({
         GP.updateArticleList()
     },
 
-    /**
-      * 事件
-      * 滚动到底部
-      */
+    //事件：滚动到底部
     scrollBottom() {
         GP.updateArticleList()
     },
@@ -53,6 +39,13 @@ Page({
         )
     },
 
+    //点击节点
+    clickNode() {
+        var url = '../article_text/article_text?art_id=220'
+        wx.navigateTo({
+            url: url
+        })
+    },
 
     onShareAppMessage: function () {
         return {

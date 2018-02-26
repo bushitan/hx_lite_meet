@@ -1,12 +1,17 @@
 
 <view class='xx_flex  xx_flex__around xx_bg__white'>
-     <block wx:for="{{tagList}}">
+    <tab  list="{{tagList}}" catchclick="clickTag" initindex="0" colorselect="#187bbf" 
+    sizeselect="13pt" sizeunselect="13pt" mode="menu"
+    ></tab>
+
+     <!-- <block wx:for="{{tagList}}">
         <view class='xx_tab' catchtap="clickTag" data-tag_index="{{index}}">
             <view class="xx_tab__node {{index == tagIndex ? 'xx_tab__select':''}} ">
                 {{item.meet_name}}
             </view>
         </view>
-    </block> 
+    </block>  -->
+
 </view>
 
 <map  latitude="23.1066805" longitude="113.3245904" ></map>

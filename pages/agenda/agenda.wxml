@@ -1,74 +1,16 @@
 <view class="page" >
-    <scroll-view class='scroll_view_y'  scroll-y="true" bindscrolltolower="scrollBottom" > 
-
-       <view hidden='{{isLoading}}'>
-        <template is="swiper_default" data="{{swiperList: agendaSwiperList }}" />
-        <template is="tag_default" data="{{tagList: tagList , tagIndex:tagIndex }}" />
-        <template is="cover_agenda_default" data="{{coverList: coverMatrix[tagIndex] }}"/>  
+    <scroll-view class='scroll_view_y'  scroll-y="true" > 
+       <view wx:if='{{!isLoading}}'>
+            <!-- 轮播图 -->
+            <swiper-list  list="{{agendaSwiperList}}" catchclick="clickSwiper" width="750rpx" height="322rpx"></swiper-list>
+            <!-- 选择框 -->
+            <view class='tab'>
+                <tab mode="scroll" list="{{tagList}}" catchclick="clickTab" initindex="0" colorselect="#187bbf" ></tab>
+            </view>
+            <!-- 日程 -->
+            <cover mode="agenda" list="{{coverMatrix[tagIndex]}}" catchclick="clickAgenda"></cover>
         </view>
-
         <image class='ad' src='http://qiniu.308308.com/meet_ad.jpg' mode="aspectFit"></image>
     </scroll-view> 
 </view>
 
-<template name="tag_default">
-    <scroll-view scroll-x="true" class='scroll-view_tab'>
-        <!-- 时间选择按钮 -->
-        <view class='xx_flex xx_bg__white' >
-                <block wx:for="{{tagList}}">
-                <view class='xx_tab' catchtap="clickTag" data-tag_index="{{index}}">
-                    <view class="xx_tab__node  {{index == tagIndex ? 'xx_tab__select':''}} ">
-                        {{item.meet_name}} 
-                    </view>
-                </view>           
-            </block> 
-        </view>
-    </scroll-view>
-</template>
-
-<template name="cover_agenda_default">
-    <view class="art_list xx_m_b15" >
-        <block wx:for="{{coverList}}" >
-            <view class='xx_agenda timeline'>
-                <view class='xx_p_t15 xx_p_lr15'>
-                    <view class='xx_flex' style='margin-left:-10px;'>
-                        <view class='point'></view>
-                        <view class='xx_f_10 '>{{item.start_time}}</view>
-                    </view>
-                    <view class='xx_agenda_content' catchtap='toVideoArticle'>
-                        <view class='xx_agenda__title'>{{item.title}}</view>
-                        <view class='xx_f_9 xx_m_t6'>{{item.summary}}</view>
-                        <view class='xx_f_7 xx_m_t8'>{{item.start_time}} - {{item.end_time}}  | {{item.des}}</view>
-                    </view>
-                </view>
-            </view>
-        </block>     
-        <view class='xx_agenda '>
-            <view class='xx_p_t15 xx_p_lr15'>
-                <view class='xx_flex' style='margin-left:-10px;'>
-                    <view class='point'></view>
-                    <view class='xx_f_10 '>当天日程结束</view>
-                </view>
-                </view>
-        </view> 
-    </view> 
-</template>
-
-
-<template name="swiper_default">
-      <view class="swiper">
-            <swiper 
-            autoplay="true" interval="5000" duration="1000"
-            indicator-dots="true"
-            indicator-color="rgba(255, 255, 255, .3)" 
-            indicator-active-color="rgba(88, 88, 88, .6)" 
-            circular="true"	>
-             <block wx:for="{{swiperList}}">
-                <swiper-item>
-                    <image src="{{item.cover_url}}" class="slide-image" mode="aspectFit"
-                    catchtap="bannerToArticle" data-article_id="{{item.article_id}}"/>
-                </swiper-item>
-            </block> 
-            </swiper>
-        </view> 
-</template>

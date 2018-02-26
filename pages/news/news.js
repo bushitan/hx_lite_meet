@@ -11,12 +11,14 @@ Page({
     data:{    
     }, 
 
-    toXXArticle() {
-        var url = '../article_text/article_text?art_id=220'
-        // var url = "../article_video/article_video"
-        wx.navigateTo({
-            url: url
-        })
+    toXXArticle(e) {
+        var index = e.detail  //索引
+
+        // var url = '../article_text/article_text?art_id=220'
+        // // var url = "../article_video/article_video"
+        // wx.navigateTo({
+        //     url: url
+        // })
     },
 
     /**

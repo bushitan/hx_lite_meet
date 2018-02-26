@@ -21,9 +21,9 @@ Page({
         })
     },
     clickTag(e) {
-        var tagIndex = e.currentTarget.dataset.tag_index
+        var index = e.detail
         GP.setData({
-            tagIndex: tagIndex
+            tagIndex: index
         })
     },
     /**

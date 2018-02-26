@@ -1,57 +1,10 @@
+
+
 <view class="page" >
     <scroll-view class='scroll_view_y'  scroll-y="true" bindscrolltolower="scrollBottom" > 
-        <!-- 滚动栏 -->
-        <!-- <view class='swiper'>
-              <image src="../../images/news.jpg"  class="slide-image" mode="aspectFit"
-                catchtap="bannerToArticle" data-article_id="{{item.article_id}}"/>
-        </view> -->
-       
-        <template is="swiper_default" data="{{swiperList: newsSwiperList }}"/>
-
-        <!-- 文章展示瀑布流 -->
-        <view class="art_list" >
-             <import src="../../template/list.wxml"/>
-            <template is="cover_news_default" data="{{articleList: articleList}}"/> 
-            <template is="loading" data="{{isMore:isMore}}"/>  
-        </view> 
+        <xx_swiper list="{{newsSwiperList}}" width="750rpx" height="423rpx"></xx_swiper>
+        <!-- <news bindclick="toXXArticle" list="{{articleList}}"></news> -->
+        <cover bindclick="toXXArticle" list="{{articleList}}" mode="news"></cover>
+        <loading isloading="{{isMore}}" content="暂无更多新闻"></loading>
     </scroll-view> 
 </view>
-
-<!-- 快讯 搜索的文章列表 -->
-<template name="cover_news_default">
-    <block wx:for="{{articleList}}" >
-         <view  catchtap="toXXArticle" data-article_id="{{item.article_id}}" data-role_value="{{item.role_value}}">  
-                <view class='xx_list'>
-                    <view class='xx_flex xx_flex__between xx_list__node'>
-                        <view>
-                            <view class='xx_list__title'>{{item.title}}</view>
-                            <!-- <view class='xx_list__time'>{{item.title}}</view> -->
-                        </view>
-                        <view class='xx_list__image'>
-                            <image src='{{item.cover_url}}'></image>
-                        </view>
-                    </view>
-                    <view class='xx_line__gray'></view>
-                </view>
-            </view> 
-    </block>
-</template>
-
-
-<template name="swiper_default">
-      <view class="swiper">
-            <swiper 
-            autoplay="true" interval="5000" duration="1000"
-            indicator-dots="true"
-            indicator-color="rgba(255, 255, 255, .3)" 
-            indicator-active-color="rgba(88, 88, 88, .6)" 
-            circular="true"	>
-             <block wx:for="{{swiperList}}">
-                <swiper-item>
-                    <image src="{{item.cover_url}}" class="slide-image" mode="aspectFit"
-                    catchtap="bannerToArticle" data-article_id="{{item.article_id}}"/>
-                </swiper-item>
-            </block> 
-            </swiper>
-        </view> 
-</template>
