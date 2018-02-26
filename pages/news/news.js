@@ -31,11 +31,11 @@ Page({
         xx_cover = new PRO_COVER.Cover(GP) //初始化 封面下拉列表
         
         //必须要登陆以后再做的事情
-        if(APP.globalData.isLogin == true)
-            GP.onInit(options)
-        else
-            APP.login(options)
-
+        // if(APP.globalData.isLogin == true)
+        //     GP.onInit(options)
+        // else
+        //     APP.login(options)
+        GP.onInit(options)
     },
 
     /**

@@ -1,0 +1,15 @@
+
+
+
+
+<scroll-view scroll-x="true"  class='scroll_box'>
+    <view  class='cover_node ' >
+        <block wx:for="{{list}}">
+            <view class='tab' catchtap='click' data-index="{{index}}">
+                <image src='{{item.cover_url}}' class='cover_image' ></image>
+                <view class='cover_title'>{{item.title}}</view>
+            </view>
+        </block> 
+    </view>
+</scroll-view>
+

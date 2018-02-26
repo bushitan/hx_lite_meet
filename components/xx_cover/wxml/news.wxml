@@ -1,7 +1,7 @@
 
 <template name="mode_news">
     <view class='news'>
-        <block wx:for="{{list}}" >
+        <block wx:for="{{list}}" wx:key="index">
             <view  catchtap="click" data-index="{{index}}">  
                 <view class=' node'>
                     <view>

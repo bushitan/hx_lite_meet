@@ -154,6 +154,7 @@
   right: 2px;
 }
 
+
 .bottom-border{
      content:" ";
     height:1rpx;

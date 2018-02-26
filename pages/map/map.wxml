@@ -3,30 +3,9 @@
     <tab  list="{{tagList}}" catchclick="clickTag" initindex="0" colorselect="#187bbf" 
     sizeselect="13pt" sizeunselect="13pt" mode="menu"
     ></tab>
-
-     <!-- <block wx:for="{{tagList}}">
-        <view class='xx_tab' catchtap="clickTag" data-tag_index="{{index}}">
-            <view class="xx_tab__node {{index == tagIndex ? 'xx_tab__select':''}} ">
-                {{item.meet_name}}
-            </view>
-        </view>
-    </block>  -->
-
 </view>
 
 <map  latitude="23.1066805" longitude="113.3245904" ></map>
 
-<scroll-view scroll-x="true"  class='xx_imgtab'>
-    <template is="cover_spot_default" data="{{coverList: coverMatrix[tagIndex] }}"/>  
-</scroll-view>
+<cover-horizon list="{{coverMatrix[tagIndex]}}"></cover-horizon>
 
-<template name="cover_spot_default">
-    <view  class='xx_imgtab__node xx_flex' >
-         <block wx:for="{{coverList}}">
-              <view class='tab'>
-                <image src='{{item.cover_url}}' class='xx_imgtab__image' catchtap='clickInfo'></image>
-                <view class='word'>{{item.title}}</view>
-            </view>
-        </block> 
-    </view>
-</template>

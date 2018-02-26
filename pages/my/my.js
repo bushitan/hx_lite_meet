@@ -106,13 +106,13 @@ Page({
     //根据id获取节目信息
     onLoad:function(option){
         // 页面初始化 options为页面跳转所带来的参数
-            GP = this
-
+        GP = this
+        // GP.onInit(option)
         //必须要登陆以后再做的事情
-        if(APP.globalData.isLogin == true)
-            GP.onInit(option)
-        else
-            APP.login(option)
+        // if(APP.globalData.isLogin == true)
+        //     GP.onInit(option)
+        // else
+        //     APP.login(option)
 
     },
 

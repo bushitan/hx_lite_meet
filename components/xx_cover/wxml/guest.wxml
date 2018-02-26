@@ -1,7 +1,7 @@
 <!-- 文章  嘉宾 --> 
 <template name="mode_guest"> 
     <view class='guest '>
-        <block wx:for="{{list}}" >
+        <block wx:for="{{list}}" wx:key="index">
             <view class='node'  catchtap="click" data-index="{{index}}">
                 <view class='logo'  >
                     <image  src="{{item.cover_url}}" ></image>

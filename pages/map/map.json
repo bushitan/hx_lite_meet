@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "cover": "../../components/xx_cover/xx_cover",
+        "cover-horizon": "../../components/xx_cover_horizon/xx_cover_horizon",
         "tab": "../../components/xx_tab/xx_tab"
     }
 }
