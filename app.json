@@ -1,5 +1,7 @@
 {
     "pages": [
+        "pages/pay/pay",
+        "pages/my_info/my_info",
         "pages/article/article",
         "pages/agenda/agenda",
         "pages/sign/sign",

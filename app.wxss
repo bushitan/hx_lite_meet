@@ -119,3 +119,9 @@ page{
     background-color: rgba(0,0,0,0.6);
 }
 
+
+/*栏目分割线  */
+.xx_line__gray{
+    content: "";
+    border-bottom: 1rpx #f0f0f0 solid;
+}

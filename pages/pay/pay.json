@@ -1,1 +1,5 @@
-{}
+{
+    "usingComponents":{
+        "pay-radio":"../../components/xx_pay_radio/xx_pay_radio"
+    }
+}

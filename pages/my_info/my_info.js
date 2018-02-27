@@ -7,33 +7,25 @@ var KEY = require('../../utils/key.js');
 
 Page({
     data: {
-        radio: [
-            { name: "标准双人间（两人合住）", checked: true, price: "￥450.00" },
-            { name: "标准单人间（包间）", checked: false, price: "￥800.00" },
-        ],
-        total:351.29,
+        male: ['男', '女'],
+        area:['北京','广西','天津','广东'],
     },
     onLoad: function (options) {
         GP = this
-
-
-        /**
-         * 检查是否已经支付，已经支付换页面
-         * 
-         * 未支付：
-         * 1支付
-         * 2、成功，调到填写资料
-         * 3、不成功：
-         * 4、返回
-         */
-        
-        //
     },
 
-    selectChange(e) {
+    inputName(e) {
+        console.log(e.detail)
+    },
+    selectMale(e) {
         var index = e.detail
-        console.log(index )
+        console.log(GP.data.male[index])
     },
+    selectArea(e){
+        var index = e.detail
+        console.log(GP.data.area[index])
+    },
+
     /**
      *  进入渠道：
      * 1 、 文章进入，有点播

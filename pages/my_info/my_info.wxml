@@ -1,0 +1,17 @@
+
+
+<view class="xx_input ">
+    <xx-input name="姓名" placeholder="请输入姓名" bindinput='inputName'></xx-input>
+        <view class='xx_line__gray'></view> 
+    <xx-input mode="select" array="{{male}}"  bindchange="selectMale" name="性别" placeholder="请选择性别"></xx-input>
+        <view class='xx_line__gray'></view> 
+    <xx-input  mode="select" array="{{area}}" index="2"  bindchange="selectArea" name="地区" placeholder="请选择地区"></xx-input>
+        <view class='xx_line__gray'></view> 
+    <xx-input name="企业名称" placeholder="请填写企业名称"></xx-input>
+        <view class='xx_line__gray'></view> 
+    <xx-input name="职务" placeholder="请填写职务"></xx-input>
+        <view class='xx_line__gray'></view> 
+    <xx-input name="手机" placeholder="请填写手机号码"></xx-input>
+</view>
+
+<view class="xx_button__hx" hover-class='xx_button__hx_press' bindtap="setSelf">报名会议</view>
