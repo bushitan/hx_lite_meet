@@ -1,0 +1,6 @@
+
+
+<!-- <article content="{{article}}"></article> -->
+<article content="{{article}}" mode="{{mode}}"></article>
+<!-- <article content="{{article}}" mode="audio"></article> -->
+<!-- <article  content="{{article}}" mode="video"></article> -->

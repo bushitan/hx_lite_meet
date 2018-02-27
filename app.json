@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/article/article",
         "pages/agenda/agenda",
         "pages/sign/sign",
         "pages/article_text/article_text",

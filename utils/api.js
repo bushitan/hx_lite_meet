@@ -161,6 +161,12 @@ module.exports = {
 
     MEET_LOGIN: meet_url + 'login/',
 
+    MEET_ARTICLE: meet_url + 'article/get/article_id/',
+
+
+
+
+
 
 
     ARTICLE_INDEX: host_url + 'index/',

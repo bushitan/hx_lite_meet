@@ -6,11 +6,11 @@ Component({
     properties: {
         mode: {
             type: String,
-            value: "news",
-            observer: '_changeStyle',
+            value: "normal",
+            // observer: '_changeStyle',
         },
-        list: {
-            type: Array,
+        content: {
+            type: String,
             value: [],
             // observer: '_changeList',
         },
@@ -20,10 +20,11 @@ Component({
    * 组件的初始数据
    */
     data: {
-        MODE_AGENDA : "agenda",
-        MODE_GUEST : "guest",
-        MODE_NEWS : "news",
-
+        MODE_NORMAL: "normal",
+        MODE_TEXT: "text",
+        MODE_AUDIO: "audio",
+        MODE_VIDEO: "video",
+        // MODE_LIVE : "news",
     },
 
   /**
@@ -32,12 +33,12 @@ Component({
   methods: {
 
       // 改变等级
-      _changeStyle(newVal, oldVal) {
-            // console.log(1111,newVal, oldVal)
-            // this.setData({
-            //     style: newVal
-            // })
-      },
+    //   _changeStyle(newVal, oldVal) {
+    //         // console.log(1111,newVal, oldVal)
+    //         // this.setData({
+    //         //     style: newVal
+    //         // })
+    //   },
       click(e) {     
           this.triggerEvent('click', e.currentTarget.dataset.index);
       },

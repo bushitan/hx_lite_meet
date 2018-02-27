@@ -1,4 +1,7 @@
 
-/* @import 'wxss/agenda.wxss';
-@import 'wxss/guest.wxss';
-@import 'wxss/news.wxss'; */
+ @import 'wxss/normal.wxss';
+ @import 'wxss/text.wxss';
+ @import 'wxss/audio.wxss';
+ @import 'wxss/video.wxss';
+/* @import 'wxss/guest.wxss';
+@import 'wxss/news.wxss';  */
