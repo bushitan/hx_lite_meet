@@ -19,7 +19,7 @@ Component({
             type: Number,
             value: 0,
         },
-        array:{
+        list:{
             type:Array,
             value:[],
         },

@@ -1,5 +1,6 @@
 {
     "usingComponents":{
-        "pay-radio":"../../components/xx_pay_radio/xx_pay_radio"
+        "pay-radio":"../../components/xx_pay_radio/xx_pay_radio",
+        "mark": "../../components/xx_mark/xx_mark"
     }
 }

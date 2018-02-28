@@ -26,7 +26,7 @@
                 <view class="xx_input__name ">{{name}}</view>
         </view>
         <view class='xx_input__line'>
-            <input class="" placeholder="{{placeholder}}" bindinput="input" value='{{roster.user_name}}' />
+            <input class="" placeholder="{{placeholder}}" bindinput="input" value='{{value}}' />
         </view>
         <view class=" xx_menu__node_access xx_text__right"></view>
     </view>
@@ -39,7 +39,7 @@
         </view>
         <view class='xx_input__area'> 
             <textarea class="" placeholder="{{placeholder}}"   placeholder-class="xx_input__placeholder"  
-            value="{{roster.introduction}}"  bindinput="input" />
+            value="{{value}}"  bindinput="input" />
         </view> 
     </view>
 </view>

@@ -21,7 +21,9 @@ Page({
     onLoad: function (options) {
         
         GP = this
-        GP.getArticleContent(1)
+        console.log(options)
+        var article_id = options.article_id
+        GP.getArticleContent(article_id)
     },
 
 
@@ -36,7 +38,7 @@ Page({
             },
             success: function (res) {
                 var object = res.data
-
+            
                 var _article_dict = object.article_dict
                 //todo  判断style ，传入选择模板名称传入
 

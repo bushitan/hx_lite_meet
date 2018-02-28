@@ -8,8 +8,10 @@ var KEY = require('key.js');
 // var host_url = 'http://192.168.200.104:8000/huaxun/api/'; 
 // var host_url = 'https://xcx.308308.com/huaxun_2/api/';
 // var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
-var host_url = 'http://127.0.0.1:8000/huaxun_2/api/';
-var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
+// var host_url = 'http://127.0.0.1:8000/huaxun_2/api/';
+// var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
+var host_url = 'http://192.168.199.204:8000/huaxun_2/api/';
+var meet_url = 'http://192.168.199.204:8000/huaxun_2/meet/';
 
 function Request(options) {
     // var _session = wx.getStorageSync(KEY.SESSION)
@@ -36,7 +38,7 @@ function _Request(options){
             method: "GET",
             data: data,
             success: function (res) {
-                if ( res.data.static == false){   //用户未登陆，重新登录
+                if (res.data.status == 'false'){   //用户未登陆，重新登录
                     WXLogin(options)
                     return
                 }
@@ -46,7 +48,7 @@ function _Request(options){
             fail: function (res) {
                 if (options.fail != undefined)
                     options.fail(res)
-                setTimeout(function () { _Request(options) },5000)
+                // setTimeout(function () { _Request(options) },5000)
                 //todo 重新连接，每隔5秒
             },
             complete: function (res) {
@@ -64,8 +66,8 @@ function WXLogin(options){
             _Request({
                 'url': meet_url + 'login/',
                 'data': {
-                    js_code: js_code,
-                    meet_session: session,
+                    js_code: res.code,
+                    meet_session: _session,
                 },
                 'success': function (res) {
                     var object = res.data
@@ -164,6 +166,15 @@ module.exports = {
     MEET_ARTICLE: meet_url + 'article/get/article_id/',
 
 
+    MEET_SIGN_GET_INFO: meet_url + 'sign/get/attendee_info/',
+    MEET_SIGN_SET_INFO: meet_url + 'sign/set/attendee_info/',
+    MEET_SIGN_SET_LOGO: meet_url + 'sign/set/attendee_logo/',
+    MEET_SIGN_GET_COST: meet_url + 'sign/get_list/cost/',
+    MEET_SIGN_PAY_ORDER: meet_url + 'sign/pay/order/',
+    MEET_SIGN_PAY_CHECK: meet_url + 'sign/pay/check/',
+    MEET_SIGN_PAY_GET_INFO: meet_url + 'sign/pay/get/info/',
+    
+    // MEET_SIGN_APY_: meet_url + 'sign/pay/callback/',
 
 
 

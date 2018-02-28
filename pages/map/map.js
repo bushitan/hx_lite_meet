@@ -14,10 +14,13 @@ Page({
             url: url
         })
     },
-    toXXArticle() {
-        var url = '../article_text/article_text?art_id=220'
+    toXXArticle(e) {
+        var index = e.detail  //索引
+        var coverMatrix = GP.data.coverMatrix
+        var tagIndex = GP.data.tagIndex
+        var article_id = coverMatrix[tagIndex][index].article_id
         wx.navigateTo({
-            url: url
+            url: '../article/article?article_id=' + article_id,
         })
     },
     clickTag(e) {

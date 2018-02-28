@@ -1,0 +1,19 @@
+
+    <view class="order" catchtap="toOrderDetail">
+        <view class="o1" >
+             <image src="{{icon}}" hidden="{{icon==''}}"></image>{{title}}
+        </view>
+        <view class="o2">
+            <view class="o2_1">{{status}}</view>
+            <view class="o2_2">
+                 <image src="{{qr}}"></image>
+            </view>   
+            <view class="o2_2">
+                {{name}}
+            </view>   
+        </view>
+         <!-- <view class="bottom-border "></view>
+        <view class="o3 cell__ft_in-access" >
+        查看支付详情
+        </view>  -->
+    </view> 

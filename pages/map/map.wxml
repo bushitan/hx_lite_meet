@@ -7,5 +7,5 @@
 
 <map  latitude="23.1066805" longitude="113.3245904" ></map>
 
-<cover-horizon list="{{coverMatrix[tagIndex]}}"></cover-horizon>
+<cover-horizon list="{{coverMatrix[tagIndex]}}" catchclick="toXXArticle"></cover-horizon>
 

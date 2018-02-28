@@ -1,8 +1,10 @@
 
 
+<mark color="#187bbf" title="报名参会"></mark>
+<view style='height:10px;'></view>
 <view class="xx_input ">
-    <pay-radio array="{{radio}}" pricename="费用合计" placeholder="请输入姓名" bindchange='selectChange' ></pay-radio>
+    <pay-radio list="{{costList}}" pricename="费用合计" placeholder="请输入姓名" bindchange='selectChange' ></pay-radio>
 </view>
 
 
-<view class="xx_button__hx" hover-class='xx_button__hx_press' bindtap="setSelf">报名会议</view>
+<view class="xx_button__hx" hover-class='xx_button__hx_press' catchtap="pay">报名支付</view>

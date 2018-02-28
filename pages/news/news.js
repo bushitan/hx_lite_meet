@@ -13,12 +13,10 @@ Page({
 
     toXXArticle(e) {
         var index = e.detail  //索引
-
-        // var url = '../article_text/article_text?art_id=220'
-        // // var url = "../article_video/article_video"
-        // wx.navigateTo({
-        //     url: url
-        // })
+        var article_id = GP.data.articleList[index].article_id
+        wx.navigateTo({
+            url: '../article/article?article_id=' + article_id,
+        })
     },
 
     /**

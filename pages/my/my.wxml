@@ -11,10 +11,11 @@
     <view class="xx_menu ">
     <view  url="" class="xx_menu__node ">
         <view class="xx_menu__node_logo" catchtap="clickLogo">
-            <image src="{{logo==''? '../../images/click_login.png':logo}}"></image>
+
+            <image src="{{userInfo.logo==''? '../../images/click_login.png': userInfo.logo}}"></image>
         </view>
         <view class="xx_menu__node_name">
-                <view class="xx_text__title">{{name}}</view>
+                 <view class="xx_text__title">{{userInfo.nick_name}}</view> 
                 <!-- <view class="xx_text__des">ID：{{user_id}}</view> -->
         </view>
         <!-- <view class="xx_menu__node_descrtion" catchtap='toRosterSelf'>
@@ -25,7 +26,8 @@
     </view> 
     
     <view  style='height:10px;' ></view>    
-    <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toXXArticle" ></xx-navigte>
+    <xx-navigte icon="{{icon_meet}}" title="入场券" bindclick="toMyInfo" wx:if="{{isPay}}"></xx-navigte>
+    <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toSign" wx:else></xx-navigte>
     <view  style='height:10px;' ></view>    
       
     <xx-navigte icon="{{icon_discount}}" title="介绍" bindclick="toXXArticle" ></xx-navigte>

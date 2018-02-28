@@ -2,21 +2,14 @@
 
 // pages/together/together.js
 var API = require('../../utils/api.js');
-var KEY = require('../../utils/storage_key.js');
+var KEY = require('../../utils/key.js');
 var APP = getApp()
 var GP;
 
-
-//历史记录筛选方式
-// var ROLE_NORMAL_ID 
-// var ROLE_VIP_ID
-// var ROLE_SUPER_VIP_ID
-
-// var PAY_MODE_SINGLE = 3;
   
 Page({
     data:{
-
+        userInfo:{},
         //华讯数据
         name: "",
         user_id:"",
@@ -35,7 +28,7 @@ Page({
         icon4: '../../images/label_fill.png',
         icon5: '../../images/search_blue.png',
         // icon4: '../../images/label_fill.png',
-        
+        isPay:false, //默认未支付
     },
 
    
@@ -55,42 +48,19 @@ Page({
         wx.getUserInfo({
             success: function (res) {
                 var userInfo = res.userInfo
-                // var nickName = userInfo.nickName
+                var nickName = userInfo.nickName
                 // var avatarUrl = userInfo.avatarUrl
                 // var gender = userInfo.gender //性别 0：未知、1：男、2：女
                 // var province = userInfo.province
                 // var city = userInfo.city
                 // var country = userInfo.country
                 console.log(userInfo)
-                GP.setData({
-                    logo: userInfo.avatarUrl,
-                    name: userInfo.nickName,
-                })
-                wx.request
-                ({
-                    url: API.MY_SET_WX,
-                    method: "GET",
-                    data: {
-                        session : wx.getStorageSync(KEY.session),
-                        logo_url : userInfo.avatarUrl,
-                        nick_name : userInfo.nickName,
-                    },
-                    success: function (res) {
-                        var object = res.data
-                        console.log(object)
-                        if (object.status == "true") //登陆成功
-                        {
-                            wx.showToast({
-                                title: '登陆成功',
-                            })
-                        }
-                        else {
+                // GP.setData({
+                //     logo: userInfo.avatarUrl,
+                //     name: userInfo.nickName,
+                // })
 
-                        }
-                    },
-                    fail: function (res) {
-                    },
-                })
+                GP.setLogo(userInfo.avatarUrl, userInfo.nickName)               
             },
             fail(){
                 wx.showModal({
@@ -103,32 +73,66 @@ Page({
         })
     },
 
+    setLogo(logo_url , nick_name) {
+        API.Request({
+            url: API.MEET_SIGN_SET_LOGO,
+            data: { 
+                logo: logo_url, 
+                nick_name: nick_name
+            },
+            success: function (res) {
+                console.log(res)
+            }
+        })
+    },
+
+
     //根据id获取节目信息
     onLoad:function(option){
         // 页面初始化 options为页面跳转所带来的参数
         GP = this
-        // GP.onInit(option)
-        //必须要登陆以后再做的事情
-        // if(APP.globalData.isLogin == true)
-        //     GP.onInit(option)
-        // else
-        //     APP.login(option)
+        
+        var user_info = wx.getStorageSync(KEY.USER_INFO)
 
+        if (user_info == "") {
+            user_info = {}
+            wx.setStorageSync(KEY.USER_INFO, user_info)
+        } 
+        GP.setData({
+            userInfo: user_info
+        })
+        
+        
+        
+        GP.onInit()
     },
 
     //必须要登陆以后发起的请求，在这里完成
     onInit:function(option){
-        GP.setData({
-            user_id: APP.globalData.user_id,
-            logo: APP.globalData.logo,
-            nick_name: APP.globalData.nick_name,
-        })
+            API.Request({
+                url: API.MEET_SIGN_GET_INFO,
+                success:function(res){
+                    console.log(res)
+                    GP.setData({
+                        userInfo: res.data.dict_attendee
+                    })
+                    wx.setStorageSync(KEY.USER_INFO, res.data.dict_attendee)
+                }
+            })
+            //检测是否已经支付
+            API.Request({
+                url: API.MEET_SIGN_PAY_CHECK,
+                success: function (res) {
+                    console.log(res)
+                    GP.setData({
+                        isPay: res.data.is_pay
+                    })
+                    // wx.setStorageSync(KEY.USER_INFO, res.data.dict_attendee)
+                }
+            })
 
-        GP.SetUserInfo()
-        wx.setNavigationBarTitle({  // 设置当前页面
-            title: APP.globalData.title 
-        })
-  },
+    },
+
 
     onShow(){
         if (APP.globalData.isLogin == true) {  //已经登录
@@ -140,101 +144,24 @@ Page({
 
 
 
-//   onShareAppMessage: function () { 
-//       return {
-//           title: '叮叮看电视',
-//           desc: '百万部视频，叮叮立即看',
-//           path: '/pages/ware_out/ware_out?id=' + GP.data.id
-//       }
-//   },
-    // wx.getLocation({
-    //     type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-    //     success: function (res) {
-    //         var latitude = res.latitude
-    //         var longitude = res.longitude
-    //         wx.openLocation({
-    //             latitude: latitude,
-    //             longitude: longitude,
-    //             scale: 28
-    //         })
-    //     }
-    // })
-    getCompanyLocation: function () {
-        wx.chooseLocation()
-        
-        // wx.getLocation({
-        //     type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-        //     success: function (res) {
-        //         var latitude = res.latitude
-        //         var longitude = res.longitude
-        //         wx.openLocation({
-        //             latitude: latitude,
-        //             longitude: longitude,
-        //             scale: 28
-        //         })
-        //     }
-        // })
-    },
+  onShareAppMessage: function () { 
 
+  },
 
-    toXXArticle() {
-        var url = '../article_text/article_text?art_id=196'
+    // 到交钱报名
+    toSign() {
+        var url = '../pay/pay'
         wx.navigateTo({
             url: url
         })
     },
 
-    toMember: function () {
-        wx.navigateTo({
-            url: '../member/member',
-        })
-    },
-
-
-    toMeetingSelf: function () {
-        wx.navigateTo({
-            url: '../meeting_self/meeting_self',
-        })
-    },
-    toNewsSelf: function () {
-        wx.navigateTo({
-            url: '../news_self/news_self',
-        })
-    },
-
-    toRoster: function () {
-        wx.navigateTo({
-            url: '../roster/roster',
-        })
-    },
-    toRosterSelf: function () {
-        wx.navigateTo({
-            url: '../roster_self/roster_self',
-        })
-    },
-    toOrder: function () {
-        wx.navigateTo({
-            url: '../order/order',
-        })
-    },
-
-    toDiscount: function () {
-        wx.navigateTo({
-            url: '../discount/discount',
-        })
-    },
-    toHistory: function () {
-        wx.navigateTo({
-            url: '../history/history',
-        })
-    },
-    toSearch: function (e) {
-        var id = e.currentTarget.dataset.id
-
-        var url = '../searchbar/searchbar'
+    // 到入场券
+    toMyInfo() {
+        var url = '../my_info/my_info'
         wx.navigateTo({
             url: url
         })
+    },   
 
-    },
 })

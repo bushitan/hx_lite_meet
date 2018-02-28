@@ -1,5 +1,8 @@
 {
     "usingComponents":{
-        "xx-input":"../../components/xx_input/xx_input"
+        "xx-input":"../../components/xx_input/xx_input",
+        "mark": "../../components/xx_mark/xx_mark",
+        "ticket": "../../components/xx_pay_ticket/xx_pay_ticket"
+        
     }
 }

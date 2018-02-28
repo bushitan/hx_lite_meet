@@ -1,7 +1,7 @@
 
 
 <radio-group class="radio-group" bindchange="change">
-    <block class="radio" wx:for="{{array}}" wx:key="index">
+    <block class="radio" wx:for="{{list}}" wx:key="index">
         <view class="xx_input__node ">
             <view >
                     <view class="xx_input__name ">{{item.name}}</view>
@@ -10,7 +10,7 @@
                 <radio  value="{{index}}" checked="{{item.checked}}"/>{{item.value}}
             </view>            
         </view>
-        <view class='xx_line__gray' hidden='{{index == array.length-1}}'></view> 
+        <view class='xx_line__gray' hidden='{{index == list.length-1}}'></view> 
     </block>
 </radio-group>
 <view class='xx_line__gray'></view>  
@@ -19,7 +19,7 @@
             <view class="total_name ">{{pricename}}</view>
     </view>
     <view class='xx_input__line total_num'>               
-        {{array[index].price}}
+        {{list[index].price}}
     </view>            
 </view>
 

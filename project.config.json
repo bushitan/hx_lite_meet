@@ -63,6 +63,18 @@
 					"name": "sign",
 					"pathName": "pages/sign/sign",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my_info",
+					"pathName": "pages/my_info/my_info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my_pay",
+					"pathName": "pages/pay/pay",
+					"query": ""
 				}
 			]
 		}

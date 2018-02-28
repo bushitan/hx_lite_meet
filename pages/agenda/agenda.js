@@ -18,9 +18,17 @@ Page({
             tagIndex: e.detail
         })
     },
+    
     clickAgenda(e){
         var index = e.detail
         console.log(e.detail)
+        var coverMatrix = GP.data.coverMatrix
+        var tagIndex = GP.data.tagIndex
+        var article_id = coverMatrix[tagIndex][index].article_id
+        console.log(article_id)
+        wx.navigateTo({
+            url: '../article/article?article_id=' + article_id ,
+        })
     },
     
     /**

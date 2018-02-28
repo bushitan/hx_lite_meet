@@ -11,10 +11,13 @@ Page({
             { name: "标准双人间（两人合住）", checked: true, price: "￥450.00" },
             { name: "标准单人间（包间）", checked: false, price: "￥800.00" },
         ],
+        costList:[],
+        costSelectIndex:0,
         total:351.29,
     },
     onLoad: function (options) {
         GP = this
+        GP.onInit()
 
 
         /**
@@ -32,7 +35,10 @@ Page({
 
     selectChange(e) {
         var index = e.detail
-        console.log(index )
+        // console.log(index )
+        GP.setData({
+            costSelectIndex:index
+        })
     },
     /**
      *  进入渠道：
@@ -42,29 +48,66 @@ Page({
     onInit: function (options) {
         
         API.Request({
-             'url': API.PAY_GET_TAG,
-             'data':{
-                 "tag_id": GP.data.fatherTag.tag_id,
-             },
+            'url': API.MEET_SIGN_GET_COST,
+            
              'success':function(res){
                 var object = res.data
+                console.log(res.data)
+                var list_cost = res.data.list_cost
+                if (list_cost.length > 0 )
+                    list_cost[0]["checked"] = true
                 GP.setData({
-                    roleList:object.role_list,
-                    roleIndex:0,
-                    vipRole: object.vip_role,
-                    superVipRole: object.super_vip_role,
-                    showSingleBtn:object.show_single_btn,
+                    costList: list_cost
                 })
+                // GP.setData({
+                //     roleList:object.role_list,
+                //     roleIndex:0,
+                //     vipRole: object.vip_role,
+                //     superVipRole: object.super_vip_role,
+                //     showSingleBtn:object.show_single_btn,
+                // })
              },
          })
     },
 
+    pay(){
 
+        API.Request({
+            'url': API.MEET_SIGN_PAY_ORDER,
+            'data': {
+                cost_id: GP.data.costList[GP.data.costSelectIndex].cost_id
+            },
+            'success': function (res) {
+                GP.wxPay(res.data.wx_sign)
+            },
+        })
+    },
 
+    paySuccess(res){
+        wx.showModal({
+            title: '支付成功',
+            content: '完善',
+        })
+    },
     /**
      * 调取微信支付api
      */
     wxPay(object) {
+        // wx.requestPayment({
+        //     'timeStamp': object.timeStamp,
+        //     'nonceStr': object.nonceStr,
+        //     'package': object.package,
+        //     'signType': 'MD5',
+        //     'paySign': object.paySign,
+        //     'success': function (res) {
+        //         console.log(res)
+        //         // GP.paySuccess()
+        //     },
+        //     'fail': function (res) {
+        //         console.log(res)
+        //         // GP.payFail()
+        //     }
+        // })
         wx.requestPayment({
             'timeStamp': object.timeStamp,
             'nonceStr': object.nonceStr,
@@ -77,7 +120,8 @@ Page({
             },
             'fail': function (res) {
                 console.log(res)
-                GP.payFail()
+                GP.paySuccess(res)
+                // GP.payFail()
             }
         })
     }, 

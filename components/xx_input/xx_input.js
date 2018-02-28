@@ -17,6 +17,10 @@ Component({
             type: String,
             value: "请输入",
         },
+        value: {
+            type: String,
+            value: "",
+        },
         index: {
             type: Number,
             value: 0,
