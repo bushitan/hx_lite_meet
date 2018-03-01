@@ -9,11 +9,17 @@
 }
 
 /* tab选择按钮 */
-.tab{
+.tab_scroll{
     padding: 0 15px;
+    /* width:100%; */
+}
+.tab_menu{
+    padding: 0 15px;
+     width:100%; 
 }
 .tab__node{
      padding: 11pt 2px; 
+     text-align: center;
 }
  
 
@@ -22,3 +28,7 @@
     justify-content: space-around;
     width:750rpx;
 }
+.select_line{
+    width: 10px;
+    margin: auto;
+} 

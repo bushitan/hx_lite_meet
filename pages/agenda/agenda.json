@@ -3,6 +3,7 @@
         "cover": "../../components/xx_cover/xx_cover",
         "loading": "../../components/xx_cover_loading/xx_cover_loading",
         "tab": "../../components/xx_tab/xx_tab",
+        "im": "../../components/xx_im/xx_im",
         "swiper-list": "../../components/xx_swiper/xx_swiper"
     }
 }

@@ -3,14 +3,13 @@
     <!-- 时间选择按钮 -->
     <view class='scroll_content' >
             <block wx:for="{{list}}" wx:key="index">
-            <view class='tab' catchtap="click" data-index="{{index}}">
-                <view wx:if="{{index == initindex}}"  class="tab__node " 
-                    style="color: {{colorselect}}; border-bottom: 2px {{colorselect}} solid; font-size:{{sizeselect}};line-height: {{sizeselect}};">
-                    {{item.meet_name}} 
+            <view class='tab_scroll' catchtap="click" data-index="{{index}}">
+                <view wx:if="{{index == initindex}}"  style="color: {{colorselect}};  font-size:{{sizeselect}};line-height: {{sizeselect}};">
+                    <view class="tab__node " >{{item.meet_name}} </view>
+                    <view class='select_line' style="border-bottom: 2px {{colorselect}} solid;"></view>
                 </view>
-                <view  wx:else  class="tab__node "
-                    style="color: {{colorunselect}};  font-size:{{sizeunselect}} ;line-height: {{sizeunselect}};">
-                    {{item.meet_name}} 
+                <view  wx:else  style="color: {{colorunselect}};  font-size:{{sizeunselect}} ;line-height: {{sizeunselect}};">
+                   <view class="tab__node " >{{item.meet_name}} </view>
                 </view>
             </view>  
         </block> 
@@ -19,14 +18,13 @@
 
 <view class='menu' wx:if="{{mode==MODE_MENU}}">
     <block wx:for="{{list}}">
-        <view class='tab' catchtap="click" data-index="{{index}}">
-            <view wx:if="{{index == initindex}}"  class="tab__node " 
-                style="color: {{colorselect}}; border-bottom: 2px {{colorselect}} solid; font-size:{{sizeselect}};line-height: {{sizeselect}};">
-                {{item.meet_name}} 
+        <view class='tab_menu' catchtap="click" data-index="{{index}}">
+            <view wx:if="{{index == initindex}}"   style="color: {{colorselect}};  font-size:{{sizeselect}};line-height: {{sizeselect}};">
+               <view class="tab__node " >{{item.meet_name}} </view>
+                <view class='select_line' style="border-bottom: 2px {{colorselect}} solid;"></view>
             </view>
-            <view  wx:else  class="tab__node "
-                style="color: {{colorunselect}};  font-size:{{sizeunselect}} ;line-height: {{sizeunselect}};">
-                {{item.meet_name}} 
+            <view  wx:else   style="color: {{colorunselect}};  font-size:{{sizeunselect}} ;line-height: {{sizeunselect}};">
+                <view class="tab__node " >{{item.meet_name}} </view>
             </view>
         </view>
     </block>  

@@ -13,4 +13,5 @@
         <image class='ad' src='http://qiniu.308308.com/meet_ad.jpg' mode="aspectFit"></image>
     </scroll-view> 
 </view>
+<!-- <im></im> -->
 
