@@ -27,7 +27,6 @@ App({
         agendaSwiperList: "",
         newsSwiperList: "",
         currenMeet: "",
-        isLogin:false,
     }, 
 
     /**

@@ -8,22 +8,100 @@ var KEY = require('key.js');
 // var host_url = 'http://192.168.200.104:8000/huaxun/api/'; 
 // var host_url = 'https://xcx.308308.com/huaxun_2/api/';
 // var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
-// var host_url = 'http://127.0.0.1:8000/huaxun_2/api/';
-// var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
-var host_url = 'http://192.168.199.204:8000/huaxun_2/api/';
-var meet_url = 'http://192.168.199.204:8000/huaxun_2/meet/';
+var host_url = 'http://127.0.0.1:8000/huaxun_2/api/';
+var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
+// var host_url = 'http://192.168.199.204:8000/huaxun_2/api/';
+// var meet_url = 'http://192.168.199.204:8000/huaxun_2/meet/';
 
+
+// var apiIsLogin = false //是否经登陆
+// var apiPreList = [] //未登录前的请求队列 
+// var apiFailList = [] //请求失败的队列
+// var apiThread = false
+var APP
+var GlobalData 
+var API_TIME = 5000 //检查进程时间间隔
+var API_LOGIN_NONE = 0
+var API_LOGIN_ING = 1
+var API_LOGIN_SUCCESS = 2 
 function Request(options) {
-    // var _session = wx.getStorageSync(KEY.SESSION)
-    // if (_session == "")
-    //     WXLogin(options)
-    // if (!_session) //检查session,不存在，为false
-    //     _session = "false"
-    // else
+
+    APP = getApp()
+    GlobalData = APP.globalData
+
+    Init() //请求初始化
+
+    options['live'] = 3 //请求重连生命周期
+    if (GlobalData.apiIsLogin == API_LOGIN_NONE) { //未登录
+        GlobalData.apiPreList.push(options)
+        _RequestLogin(options)
+        GlobalData.apiIsLogin = API_LOGIN_ING
+    }
+    else if (GlobalData.apiIsLogin == API_LOGIN_ING) {   //登陆中
+        GlobalData.apiPreList.push(options)
+    }
+    else {  //登陆成功
         _Request(options)
+    }
 }
 
+
+// 初始化
+function Init(){
+    //初始化 全局变量
+    if (GlobalData.apiIsLogin == undefined) {
+        GlobalData.apiIsLogin = 0 //是否经登陆
+        GlobalData.apiPreList = [] //未登录前的请求队列 
+        GlobalData.apiFailList = [] //请求失败的队列
+        GlobalData.apiThread = false
+
+    }
+
+    if (GlobalData.apiThread == false) {
+        setInterval(
+            function () {
+                var opt = GlobalData.apiFailList.pop()
+                console.log(opt)
+                if (opt != undefined) {
+                    opt['live']--
+                    _Request(opt)
+                }
+            }, API_TIME)
+        GlobalData.apiThread = true
+    }
+}
+
+function _RequestLogin(options) {
+    wx.login({
+        success: function (res) {
+            var _session = wx.getStorageSync(KEY.SESSION)
+            _Request({
+                'live':3,
+                'url': meet_url + 'login/',
+                'data': {
+                    js_code: res.code,
+                    meet_session: _session,
+                },
+                'success': function (res) {
+                    var object = res.data
+                    wx.setStorageSync(KEY.SESSION, res.data.dict_user.session)
+
+                    GlobalData.apiIsLogin = API_LOGIN_SUCCESS //登陆成功
+                    // 执行login == false时的请求
+                    for (var i in GlobalData.apiPreList){
+                        _Request(GlobalData.apiPreList[i])
+                    }
+                    GlobalData.apiPreList = []
+                },
+            })
+        }
+    });
+}
+    
+// 普通登陆
 function _Request(options){
+    // console.log(options)
+
     var data = options.data
     if (data == undefined)
         data = {}
@@ -38,18 +116,14 @@ function _Request(options){
             method: "GET",
             data: data,
             success: function (res) {
-                if (res.data.status == 'false'){   //用户未登陆，重新登录
-                    WXLogin(options)
-                    return
-                }
                 if (options.success != undefined)
                     options.success(res)
             },
             fail: function (res) {
                 if (options.fail != undefined)
                     options.fail(res)
-                // setTimeout(function () { _Request(options) },5000)
-                //todo 重新连接，每隔5秒
+                if (options['live'] > 0)
+                    GlobalData.apiFailList.push(options) //将请求加入失败队列
             },
             complete: function (res) {
                 if (options.complete != undefined)
@@ -58,26 +132,26 @@ function _Request(options){
         })
 }
 
-function WXLogin(options){
-    wx.login
-    ({
-        success: function (res) {
-            var _session = wx.getStorageSync(KEY.SESSION)
-            _Request({
-                'url': meet_url + 'login/',
-                'data': {
-                    js_code: res.code,
-                    meet_session: _session,
-                },
-                'success': function (res) {
-                    var object = res.data
-                    wx.setStorageSync(KEY.SESSION, res.data.dict_user.session)
-                    _Request(options)
-                },
-            })
-        }
-    });
-}
+// function WXLogin(options){
+//     wx.login
+//     ({
+//         success: function (res) {
+//             var _session = wx.getStorageSync(KEY.SESSION)
+//             _Request({
+//                 'url': meet_url + 'login/',
+//                 'data': {
+//                     js_code: res.code,
+//                     meet_session: _session,
+//                 },
+//                 'success': function (res) {
+//                     var object = res.data
+//                     wx.setStorageSync(KEY.SESSION, res.data.dict_user.session)
+//                     _Request(options)
+//                 },
+//             })
+//         }
+//     });
+// }
 
 //下拉滚动查询
 function RequestScroll(start = 0, range = 10) {
@@ -104,14 +178,6 @@ function RequestScroll(start = 0, range = 10) {
                 else
                     hack.success(res, true) //还有文章
             },
-            // 'fail': function (res) {
-            //     if (hack.fail != undefined)
-            //         hack.fail(res)
-            // },
-            // 'complete': function (res) {
-            //     if (hack.complete != undefined)
-            //         hack.complete(res)
-            // },
         })
     }
     this._success = function () {
