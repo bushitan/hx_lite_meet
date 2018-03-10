@@ -20,34 +20,20 @@ var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
 // var apiThread = false
 var APP
 var GlobalData 
-var API_TIME = 5000 //检查进程时间间隔
-var API_LOGIN_NONE = 0
-var API_LOGIN_ING = 1
-var API_LOGIN_SUCCESS = 2 
+var API_TIME = 5000               //检查进程时间间隔
+var API_LOGIN_NONE = 0       //未登录
+var API_LOGIN_ING = 1           //登陆中
+var API_LOGIN_SUCCESS = 2   //已登录
+var API_LIVE = 3                       //重连次数
 function Request(options) {
-
-    APP = getApp()
-    GlobalData = APP.globalData
-
     Init() //请求初始化
-
-    options['live'] = 3 //请求重连生命周期
-    if (GlobalData.apiIsLogin == API_LOGIN_NONE) { //未登录
-        GlobalData.apiPreList.push(options)
-        _RequestLogin(options)
-        GlobalData.apiIsLogin = API_LOGIN_ING
-    }
-    else if (GlobalData.apiIsLogin == API_LOGIN_ING) {   //登陆中
-        GlobalData.apiPreList.push(options)
-    }
-    else {  //登陆成功
-        _Request(options)
-    }
+    InitRequest(options)
 }
-
 
 // 初始化
 function Init(){
+    APP = getApp()
+    GlobalData = APP.globalData
     //初始化 全局变量
     if (GlobalData.apiIsLogin == undefined) {
         GlobalData.apiIsLogin = 0 //是否经登陆
@@ -71,12 +57,28 @@ function Init(){
     }
 }
 
-function _RequestLogin(options) {
+function InitRequest(options){
+
+    options['live'] = API_LIVE //请求重连生命周期
+    if (GlobalData.apiIsLogin == API_LOGIN_NONE) {     //未登录
+        GlobalData.apiPreList.push(options)
+        _RequestLogin()
+        GlobalData.apiIsLogin = API_LOGIN_ING
+    }
+    else if (GlobalData.apiIsLogin == API_LOGIN_ING) {  //登陆中
+        GlobalData.apiPreList.push(options)
+    }
+    else {                                                                             //登陆成功
+        _Request(options)
+    }
+}
+
+function _RequestLogin() {
     wx.login({
         success: function (res) {
             var _session = wx.getStorageSync(KEY.SESSION)
             _Request({
-                'live':3,
+                'live': API_LIVE,
                 'url': meet_url + 'login/',
                 'data': {
                     js_code: res.code,
@@ -132,28 +134,8 @@ function _Request(options){
         })
 }
 
-// function WXLogin(options){
-//     wx.login
-//     ({
-//         success: function (res) {
-//             var _session = wx.getStorageSync(KEY.SESSION)
-//             _Request({
-//                 'url': meet_url + 'login/',
-//                 'data': {
-//                     js_code: res.code,
-//                     meet_session: _session,
-//                 },
-//                 'success': function (res) {
-//                     var object = res.data
-//                     wx.setStorageSync(KEY.SESSION, res.data.dict_user.session)
-//                     _Request(options)
-//                 },
-//             })
-//         }
-//     });
-// }
 
-//下拉滚动查询
+// //下拉滚动查询
 function RequestScroll(start = 0, range = 10) {
     // this.GP = _GP
     this.start = start //文章初始位置
@@ -186,35 +168,6 @@ function RequestScroll(start = 0, range = 10) {
 }
 
 
-
-
-
-// function myLogin(js_code, session, options){
-//     _Request({
-//         'url': meet_url + 'login/',
-//         'data': {
-//             js_code: js_code,
-//             meet_session: session,
-//         },
-//         'success': function (res) {
-//             var object = res.data
-//             wx.setStorageSync(KEY.SESSION, res.data.dict_user.session)
-//             _Request(options)
-//         },
-//         // 'fail': function (res) {
-//         //     wx.showModal({
-//         //         title: '网络连接失败，是否重新登陆？',
-//         //         content: '请确认网络是否正常',
-//         //         confirmText: "重新登陆",
-//         //         success: function (res) {
-//         //             if (res.confirm) {
-//         //                 WXLogin(options)
-//         //             }
-//         //         }
-//         //     })
-//         // },
-//     })
-// }
 
 
 
