@@ -11,6 +11,7 @@ Page({
         area:['北京','广西','天津','广东'],
         userInfo:{},
         lock:false,
+        bb:"43243254",
     },
     onLoad: function (options) {
         GP = this

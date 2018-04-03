@@ -47,7 +47,7 @@ function Init(){
         setInterval(
             function () {
                 var opt = GlobalData.apiFailList.pop()
-                console.log(opt)
+                // console.log(opt)
                 if (opt != undefined) {
                     opt['live']--
                     _Request(opt)

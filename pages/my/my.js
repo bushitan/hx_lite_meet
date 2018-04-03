@@ -33,15 +33,8 @@ Page({
 
    
     clickLogo:function(){
-        wx.openSetting({
-            success: (res) => {
-                console.log("授权结果..")
-                console.log(res)
-                if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
-                    GP.SetUserInfo()
-                }
-            }
-        })
+        GP.SetUserInfo()
+        
     },
 
     SetUserInfo:() =>{
@@ -55,19 +48,24 @@ Page({
                 // var city = userInfo.city
                 // var country = userInfo.country
                 console.log(userInfo)
-                // GP.setData({
-                //     logo: userInfo.avatarUrl,
-                //     name: userInfo.nickName,
-                // })
+                GP.setData({
+                    userInfo: {
+                        logo: userInfo.avatarUrl,
+                        nick_name: userInfo.nickName,
+                    }
+                })
 
                 GP.setLogo(userInfo.avatarUrl, userInfo.nickName)               
             },
             fail(){
-                wx.showModal({
-                    title: '温馨提示',
-                    content: '左上角"点击登录"，可重新登录',
-                    showCancel:false,
-                    confirmText:'知道了',
+                wx.openSetting({
+                    success: (res) => {
+                        console.log("授权结果..")
+                        console.log(res)
+                        if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
+                            GP.SetUserInfo()
+                        }
+                    }
                 })
             }
         })
@@ -164,4 +162,21 @@ Page({
         })
     },   
 
+
+    toScanCode(){
+        wx.scanCode({
+            success:function(res){
+                console.log(res)
+                console.log(res.result)
+                wx.showModal({
+                    title: '扫码成功',
+                    content: '',
+                })
+            },
+
+            fail: (res) => {
+                console.log(res)
+            }
+        })
+    },
 })

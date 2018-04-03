@@ -2,9 +2,12 @@
 
 <mark color="#187bbf" title="入场券"></mark>
 <view style='height:10px;'></view>
-<block wx:for="{{signList}}">
-    <ticket title="{{item.meet_name}}" status="已付款（SN:{{item.sign_id}}）" name="{{item.cost_name}}"></ticket>
-</block>
+<!-- <block wx:for="{{signList}}">
+    <ticket title="{{item.meet_name}} " status="已付款（SN:{{item.sign_id}}）" qr="{{item.sign_id}}" name="{{item.cost_name}}"></ticket>
+</block> -->
+ <ticket title="{{signList[0].meet_name}} " status="已付款（SN:{{signList[0].sign_id}}）" qr="{{signList[0].sign_id}}" name="{{signList[0].cost_name}}"></ticket>
+
+
  <mark color="#187bbf" title="请完善参会人员信息"></mark>
 <view class="xx_input ">
     <xx-input name="姓名" placeholder="请输入姓名" bindinput='inputName' value='{{userInfo.name}}'></xx-input>
