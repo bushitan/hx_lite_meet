@@ -55,7 +55,11 @@ Page({
                     }
                 })
 
-                GP.setLogo(userInfo.avatarUrl, userInfo.nickName)               
+                GP.setLogo(userInfo.avatarUrl, userInfo.nickName)   
+                wx.showModal({
+                    titles: '更新头像成功',
+                    // content: '我们无法知晓你的头像',
+                })            
             },
             fail(){
                 wx.openSetting({
@@ -63,7 +67,11 @@ Page({
                         console.log("授权结果..")
                         console.log(res)
                         if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
-                            GP.SetUserInfo()
+                                wx.showModal({
+                                    title: '您未授权',
+                                    content: '我们无法知晓你的头像',
+                                })
+                            // GP.SetUserInfo()
                         }
                     }
                 })
@@ -125,7 +133,6 @@ Page({
                     GP.setData({
                         isPay: res.data.is_pay
                     })
-                    // wx.setStorageSync(KEY.USER_INFO, res.data.dict_attendee)
                 }
             })
 
@@ -157,6 +164,13 @@ Page({
     // 到入场券
     toMyInfo() {
         var url = '../my_info/my_info'
+        wx.navigateTo({
+            url: url
+        })
+    },
+    // 到入场券
+    toMyTicket() {
+        var url = '../my_ticket/my_ticket'
         wx.navigateTo({
             url: url
         })

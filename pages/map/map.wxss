@@ -16,3 +16,7 @@ map{
     font-size: 11pt;
     text-align: left;
 }
+
+.btn {
+    padding: 0 15px ;
+}

@@ -41,10 +41,10 @@ Page({
 
     //点击节点
     clickNode() {
-        var url = '../article_text/article_text?art_id=220'
-        wx.navigateTo({
-            url: url
-        })
+        // var url = '../article_text/article_text?art_id=220'
+        // wx.navigateTo({
+        //     url: url
+        // })
     },
 
     onShareAppMessage: function () {

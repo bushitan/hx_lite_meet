@@ -1,11 +1,28 @@
 
-<view class='xx_flex  xx_flex__around xx_bg__white'>
+<!-- <view class='xx_flex  xx_flex__around xx_bg__white'>
     <tab  list="{{tagList}}" catchclick="clickTag" initindex="0" colorselect="#187bbf" 
     sizeselect="13pt" sizeunselect="13pt" mode="menu"
     ></tab>
+</view> -->
+
+<map  latitude="{{latitude}}" longitude="{{longitude}}" ></map>
+<!-- <view  style='height:15px;' ></view>    -->
+ <view class="xx_menu ">
+        <view catchtap="" url="" class="xx_menu__node " hover-class="xx_active">
+            <image  class="xx_menu__node_icon_lite" src="../../images/icon_location.png"></image>
+            <view class="xx_menu__node_name ">阅江西路22号首层</view>
+            <!-- <view class=" xx_menu__node_access xx_text__right"></view> -->
+        </view>
+        <view class='xx_line__gray'></view>
+        <view catchtap="toPhone" url="" class="xx_menu__node " hover-class="xx_active">
+            <image  class="xx_menu__node_icon_lite" src="../../images/icon_phone.png"></image>
+            <view class="xx_menu__node_name">{{phoneNumber}}</view>
+            <view class=" xx_menu__node_access xx_text__right"></view>
+        </view>
+    </view>
+<view  style='height:15px;' ></view>   
+<view class='btn'>
+    <button type='primary' catchtap='toMap'>导航</button>
 </view>
-
-<map  latitude="23.1066805" longitude="113.3245904" ></map>
-
-<cover-horizon list="{{coverMatrix[tagIndex]}}" catchclick="toXXArticle"></cover-horizon>
+<!-- <cover-horizon list="{{coverMatrix[tagIndex]}}" catchclick="toXXArticle"></cover-horizon> -->
 

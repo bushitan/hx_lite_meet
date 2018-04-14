@@ -4,7 +4,11 @@ var KEY = require('utils/key.js');
 var g
 var GP
 App({
-    
+    share:{
+        title: '华讯会务',
+        desc: '阿拉善大会',
+        path: '/pages/agenda/agenda'
+    },
     //全局变量配置
     STATIC: {
         YES: 1,

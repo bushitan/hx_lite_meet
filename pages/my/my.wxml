@@ -26,15 +26,18 @@
     </view> 
     
     <view  style='height:10px;' ></view>    
-    <xx-navigte icon="{{icon_meet}}" title="入场券" bindclick="toMyInfo" wx:if="{{isPay}}"></xx-navigte>
+    <xx-navigte icon="{{icon_meet}}" title="我的信息" bindclick="toMyInfo" ></xx-navigte>
+
+    <view  style='height:10px;' ></view>   
+    <xx-navigte icon="{{icon_meet}}" title="入场券" bindclick="toMyTicket"  wx:if="{{isPay}}"></xx-navigte>
     <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toSign" wx:else></xx-navigte>
     <view  style='height:10px;' ></view>    
       
-    <xx-navigte icon="{{icon_meet}}" title="扫一扫" bindclick="toScanCode" ></xx-navigte>
+    <!-- <xx-navigte icon="{{icon_meet}}" title="扫一扫" bindclick="toScanCode" ></xx-navigte>
 
     <xx-navigte icon="{{icon_discount}}" title="介绍" bindclick="toXXArticle" ></xx-navigte>
     <xx-navigte icon="{{icon_search}}" title="常见问题" bindclick="toXXArticle" ></xx-navigte>
-    <view  style='height:10px;' ></view>    
+    <view  style='height:10px;' ></view>     -->
 
 
 

@@ -1,9 +1,11 @@
 {
     "pages": [
         "pages/agenda/agenda",
+        
+        "pages/my_ticket/my_ticket",
+        "pages/my_info/my_info",
         "pages/my/my",
         "pages/pay/pay",
-        "pages/my_info/my_info",
         "pages/article/article",
         "pages/sign/sign",
         "pages/article_text/article_text",

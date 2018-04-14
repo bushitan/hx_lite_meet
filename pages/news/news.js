@@ -9,6 +9,7 @@ var APP = getApp()
 var GP;
 Page({
     data:{    
+        isMore:true,
     }, 
 
     toXXArticle(e) {
@@ -48,14 +49,26 @@ Page({
 
     //必须要登陆以后发起的请求，在这里完成
     onInit: function (options){
-        xx_cover.AddList(
-            API.MEET_NEWS,
-            {"meet_id":1},
-        )
-        //轮播图
-        GP.setData({
-            newsSwiperList: APP.globalData.newsSwiperList,
+        // xx_cover.AddList(
+        //     API.MEET_NEWS,
+        //     {"meet_id":1},
+        // )
+        API.Request({
+            'url': API.MEET_NEWS,
+            'data': { "meet_id": 1 },
+            'success': function (res) {
+                GP.setData({
+                    newsSwiperList: res.data.news_swiper_list,
+                    articleList: res.data.article_list,
+                    isMore:false,
+                })
+            },
         })
+
+        // //轮播图
+        // GP.setData({
+        //     newsSwiperList: APP.globalData.newsSwiperList,
+        // })
     },
 
 

@@ -10,6 +10,31 @@ Page({
     clickSwiper(e){
         var index = e.detail
         console.log(e.detail)
+
+        API.Request({
+            url: API.MEET_SIGN_PAY_CHECK,
+            success: function (res) {
+                console.log(res)
+                if (res.data.is_pay == false)
+                    wx.navigateTo({
+                                url: '../pay/pay'
+                    })
+                else
+                    wx.showModal({
+                        title: '您已经报名成功',
+                        content: '请到“我”完善参会信息',
+                        confirmText: "完善信息",
+                        success: function (res) {
+                            if (res.confirm)
+                                wx.navigateTo({
+                                    url: '../my_info/my_info',
+                                })
+                        },
+                    })
+            }
+        })
+
+
     },
     clickTab(e) {
         console.log(e.detail)
@@ -87,11 +112,12 @@ Page({
     },
 
     onShareAppMessage: function () {
-        return {
-            title: '快讯',
-            desc: '简讯、资讯信息',
-            path: '/pages/index/index?father_tag_id=' + GP.data.fatherTag.tag_id
-        }
+        return APP.share
+        // return {
+        //     title: '快讯',
+        //     desc: '简讯、资讯信息',
+        //     path: '/pages/index/index?father_tag_id=' + GP.data.fatherTag.tag_id
+        // }
     },
 
 })
