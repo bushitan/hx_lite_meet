@@ -107,12 +107,11 @@ Page({
         GP.setData({
             userInfo: user_info
         })
-        
-        
-        
+
         GP.onInit()
     },
 
+  
     //必须要登陆以后发起的请求，在这里完成
     onInit:function(option){
             API.Request({
@@ -125,16 +124,7 @@ Page({
                     wx.setStorageSync(KEY.USER_INFO, res.data.dict_attendee)
                 }
             })
-            //检测是否已经支付
-            API.Request({
-                url: API.MEET_SIGN_PAY_CHECK,
-                success: function (res) {
-                    console.log(res)
-                    GP.setData({
-                        isPay: res.data.is_pay
-                    })
-                }
-            })
+
 
     },
 
@@ -145,6 +135,16 @@ Page({
                 title: APP.globalData.title
             })
         }
+        //检测是否已经支付
+        API.Request({
+            url: API.MEET_SIGN_PAY_CHECK,
+            success: function (res) {
+                console.log(res)
+                GP.setData({
+                    isPay: res.data.is_pay
+                })
+            }
+        })
     },
 
 

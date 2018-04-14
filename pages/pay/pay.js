@@ -83,10 +83,26 @@ Page({
         })
     },
 
-    paySuccess(res){
+    paySuccess(res) {
         wx.showModal({
             title: '支付成功',
             content: '完善',
+            success:function(){
+                wx.switchTab({
+                    url: '/pages/my/my',
+                })
+            },
+        })
+    },
+    payFail(res) {
+        wx.showModal({
+            title: '支付失败',
+            content: '如已经扣款，请联系客服人员',
+            success: function () {
+                wx.switchTab({
+                    url: '/pages/my/my',
+                })
+            },
         })
     },
     /**
@@ -116,12 +132,12 @@ Page({
             'paySign': object.paySign,
             'success': function (res) {
                 console.log(res)
-                GP.paySuccess()
+                GP.paySuccess(res)
             },
             'fail': function (res) {
                 console.log(res)
-                GP.paySuccess(res)
-                // GP.payFail()
+                // GP.paySuccess(res)
+                GP.payFail(res)
             }
         })
     }, 
