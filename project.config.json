@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.1",
+	"libVersion": "1.9.94",
 	"appid": "wx3efaa3a88f42df6b",
 	"projectname": "%E5%8D%8E%E8%AE%AF%E4%BC%9A%E5%8A%A1",
 	"isGameTourist": false,
@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
@@ -79,6 +79,12 @@
 					"name": "my_pay",
 					"pathName": "pages/pay/pay",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "article",
+					"pathName": "pages/article/article",
+					"query": "article_id=1"
 				}
 			]
 		}

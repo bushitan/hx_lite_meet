@@ -8,6 +8,7 @@ Page({
     },
     
     clickSwiper(e){
+        return 
         var index = e.detail
         console.log(e.detail)
 
@@ -45,6 +46,7 @@ Page({
     },
     
     clickAgenda(e){
+        return 
         var index = e.detail
         console.log(e.detail)
         var coverMatrix = GP.data.coverMatrix

@@ -5,18 +5,18 @@
     ></tab>
 </view> -->
 
-<map  latitude="{{latitude}}" longitude="{{longitude}}" ></map>
+<map  latitude="{{mapDict.latitude}}" longitude="{{mapDict.longitude}}" ></map>
 <!-- <view  style='height:15px;' ></view>    -->
  <view class="xx_menu ">
         <view catchtap="" url="" class="xx_menu__node " hover-class="xx_active">
             <image  class="xx_menu__node_icon_lite" src="../../images/icon_location.png"></image>
-            <view class="xx_menu__node_name ">阅江西路22号首层</view>
+            <view class="xx_menu__node_name ">{{mapDict.address}}</view>
             <!-- <view class=" xx_menu__node_access xx_text__right"></view> -->
         </view>
         <view class='xx_line__gray'></view>
         <view catchtap="toPhone" url="" class="xx_menu__node " hover-class="xx_active">
             <image  class="xx_menu__node_icon_lite" src="../../images/icon_phone.png"></image>
-            <view class="xx_menu__node_name">{{phoneNumber}}</view>
+            <view class="xx_menu__node_name">{{mapDict.phoneNumber}}</view>
             <view class=" xx_menu__node_access xx_text__right"></view>
         </view>
     </view>

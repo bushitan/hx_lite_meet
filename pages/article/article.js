@@ -38,7 +38,7 @@ Page({
             },
             success: function (res) {
                 var object = res.data
-            
+                console.log(res.data)
                 var _article_dict = object.article_dict
                 //todo  判断style ，传入选择模板名称传入
 

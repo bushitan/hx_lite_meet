@@ -2,7 +2,7 @@
 
 <view class="page" >
     <scroll-view class='scroll_view_y'  scroll-y="true" bindscrolltolower="scrollBottom" > 
-        <xx_swiper list="{{newsSwiperList}}" width="750rpx" height="423rpx"></xx_swiper>
+        <!-- <xx_swiper list="{{newsSwiperList}}" width="750rpx" height="423rpx"></xx_swiper> -->
         <!-- <news bindclick="toXXArticle" list="{{articleList}}"></news> -->
         <cover bindclick="toXXArticle" list="{{articleList}}" mode="news"></cover>
         <loading isloading="{{isMore}}" content="暂无更多新闻"></loading>

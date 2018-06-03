@@ -4,8 +4,9 @@
         <block wx:for="{{list}}" wx:key="index">
             <view  catchtap="click" data-index="{{index}}">  
                 <view class=' node'>
-                    <view>
+                    <view class='left'>
                         <view class='title'>{{item.title}}</view>
+                        <view class='time'>{{item.create_time}}</view>
                     </view>
                     <view class='cover'>
                         <image src='{{item.cover_url}}'></image>

@@ -1,3 +1,4 @@
+
  <template name="mode_text"> 
     <view class="xx_text">
         <!-- 标题 -->

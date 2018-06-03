@@ -2,7 +2,7 @@
 
 .cover{
     width: 750rpx;
-    height: 438rpx;
+    /* height: 438rpx; */
 }
 
 .user_name{

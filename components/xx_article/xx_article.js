@@ -10,8 +10,8 @@ Component({
             // observer: '_changeStyle',
         },
         content: {
-            type: String,
-            value: [],
+            type: object,
+            value: {},
             // observer: '_changeList',
         },
   },
@@ -26,7 +26,9 @@ Component({
         MODE_VIDEO: "video",
         // MODE_LIVE : "news",
     },
-
+    ready(){
+        console.log("article ready")
+    },
   /**
    * 组件的方法列表
    */

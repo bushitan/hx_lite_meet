@@ -7,9 +7,12 @@ var APP = getApp()
 var GP;
 Page({
     data: {
-        latitude: 23.1066805,
-        longitude: 113.3245904,
-        phoneNumber:"020-89338222",
+        mapDict: {
+            // latitude: 23.1066805,
+            // longitude: 113.3245904,
+            // phoneNumber: "020-89338222",
+            // address:"阅江西路22号首层"
+        },
     },
     clickInfo() {
         var url = '../map_info/map_info'
@@ -34,7 +37,7 @@ Page({
     },
     toPhone(){
         wx.makePhoneCall({
-            phoneNumber: GP.data.phoneNumber //仅为示例，并非真实的电话号码
+            phoneNumber: GP.data.mapDict.phoneNumber //仅为示例，并非真实的电话号码
         })
     },
 
@@ -45,8 +48,8 @@ Page({
                 // var latitude = res.latitude
                 // var longitude = res.longitude
                 wx.openLocation({
-                    latitude: GP.data.latitude,
-                    longitude: GP.data.longitude,
+                    latitude: GP.data.mapDict.latitude,
+                    longitude: GP.data.mapDict.longitude,
                     scale: 28
                 })
             }
@@ -87,9 +90,10 @@ Page({
             'data': { "meet_id": 1 },
             'success': function (res) {
                 GP.setData({
-                    tagIndex: 0,
-                    tagList: res.data.tag_list,
-                    coverMatrix: res.data.cover_matrix,
+                    // tagIndex: 0,
+                    // tagList: res.data.tag_list,
+                    // coverMatrix: res.data.cover_matrix,
+                    mapDict:res.data.map_dict
                 })
             },
         })
