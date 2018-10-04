@@ -27,35 +27,26 @@ Page({
     onLoad:function(options){
 
         GP = this
-        xx_cover = new PRO_COVER.Cover(GP) //初始化 封面下拉列表
-        
-        //必须要登陆以后再做的事情
-        // if(APP.globalData.isLogin == true)
-        //     GP.onInit(options)
-        // else
-        //     APP.login(options)
-        GP.onInit(options)
+        GP.onInit()
     },
 
     /**
      * 选择新行业后返回，更新默认目录
      */
     onShow() {
-         
-        if (APP.globalData.isLogin == true){  //已经登录
-                 
+        if (GP.data.meetID != wx.getStorageSync(API.KEY_MEET_ID)) {
+            GP.onInit()
         }
     }, 
 
     //必须要登陆以后发起的请求，在这里完成
-    onInit: function (options){
-        // xx_cover.AddList(
-        //     API.MEET_NEWS,
-        //     {"meet_id":1},
-        // )
+    onInit: function (){
+        GP.setData({
+            meetID: wx.getStorageSync(API.KEY_MEET_ID)
+        })
         API.Request({
             'url': API.MEET_NEWS,
-            'data': { "meet_id": 1 },
+            'data': { "meet_id": GP.data.meetID },
             'success': function (res) {
                 GP.setData({
                     newsSwiperList: res.data.news_swiper_list,
@@ -65,41 +56,10 @@ Page({
             },
         })
 
-        // //轮播图
-        // GP.setData({
-        //     newsSwiperList: APP.globalData.newsSwiperList,
-        // })
     },
-
-
-    /**
-      * 事件
-      * 滚动到底部
-      */
-    scrollBottom() {
-        return 
-        if( PRO_ARTICLE.CheckScrollLock(GP) ) //通过才能继续查
-            GP.getArticleGetListByTag(GP.data.sonTagID)
-    },
-
-
 
     onShareAppMessage: function () {
         return APP.share
-    },
-
-
-    /**
-     * 点击滚动栏
-     */
-    bannerToArticle: function (e) {
-        var article_id = e.currentTarget.dataset.article_id
-        wx.setStorageSync("current_article_list", [])
-        var url = '../detail/detail?art_id=' + article_id
-        wx.navigateTo({
-            url: url
-        })
-
     },
 
 })

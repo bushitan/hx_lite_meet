@@ -18,7 +18,7 @@ Page({
                 console.log(res)
                 if (res.data.is_pay == false)
                     wx.navigateTo({
-                                url: '../pay/pay'
+                        url: '../pay/pay'
                     })
                 else
                     wx.showModal({
@@ -63,8 +63,10 @@ Page({
      * 加载默认的标签
      */
     onLoad: function (options) {
-
         GP = this
+        GP.setData({
+            meetID: wx.getStorageSync(API.KEY_MEET_ID)
+        })
         GP.onInit()
     },
 
@@ -72,11 +74,14 @@ Page({
      * 选择新行业后返回，更新默认目录
      */
     onShow() {
-
-        if (APP.globalData.isLogin == true) {  //已经登录
-
+        if ( GP.data.meetID != wx.getStorageSync(API.KEY_MEET_ID)){
+            GP.setData({
+                meetID: wx.getStorageSync(API.KEY_MEET_ID)
+            })
+            GP.onInit()
         }
     },
+    
 
     //必须要登陆以后发起的请求，在这里完成
     onInit: function (options) {
@@ -86,7 +91,7 @@ Page({
         })
         API.Request({
             'url': API.MEET_AGENDA,
-            'data': { "meet_id": 1 },
+            'data': { "meet_id": GP.data.meetID },
             'success': function (res) {
                 GP.setData({
                     tagIndex: 0,

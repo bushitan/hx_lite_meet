@@ -11,7 +11,6 @@
     <view class="xx_menu ">
     <view  url="" class="xx_menu__node ">
         <view class="xx_menu__node_logo" catchtap="clickLogo">
-
             <image src="{{userInfo.logo==''? '../../images/click_login.png': userInfo.logo}}"></image>
         </view>
         <view class="xx_menu__node_name">
@@ -33,6 +32,8 @@
     <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toSign" wx:else></xx-navigte>
     <view  style='height:10px;' ></view>    
       
+      
+    <xx-navigte icon="{{icon_meet}}" title="切换会议" bindclick="toCatalog" ></xx-navigte>
     <!-- <xx-navigte icon="{{icon_meet}}" title="扫一扫" bindclick="toScanCode" ></xx-navigte>
 
     <xx-navigte icon="{{icon_discount}}" title="介绍" bindclick="toXXArticle" ></xx-navigte>

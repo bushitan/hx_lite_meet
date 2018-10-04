@@ -1,0 +1,63 @@
+/* pages/together/together.wxss */
+
+ 
+.header{
+    padding: 10px 15px;
+     /* box-shadow:0px 1px 5px #aaa; */
+}
+.header .box{
+    background-color: #fff;
+    padding: 15px;
+}
+.header .title{
+    font-size: 11pt;
+    text-align: center;
+    padding-bottom:5px; 
+    /* font-weight: bolder; */
+}
+.header .content{
+    width: 100%;
+    font-size: 9pt;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.header .image{
+    flex-basis:60px;
+    margin-right: 10px;
+}
+.header image{
+    width: 96px;
+    height:72px;
+}
+.header .des{
+    width: 100%;
+}
+.header .summary{
+    
+    height:45px;
+    line-height: 15px;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3; 
+}
+.header .more{
+    text-align: right;
+    color: #000;
+    padding-right: 5px;
+}
+
+.prepare{
+    color: #187bbf;
+}
+
+.ing{
+    color: #2ebe60;
+}
+
+.end{
+    color: #ff762a;
+}

@@ -177,6 +177,13 @@ Page({
         })
     },   
 
+    toCatalog(){
+
+        wx.setStorageSync(API.KEY_MEET_ID, "") //清空会议
+        wx.redirectTo({
+            url: '/pages/catalog/catalog',
+        })
+    },
 
     toScanCode(){
         wx.scanCode({

@@ -1,10 +1,8 @@
 <!--pages/news/news.wxml-->
-<view class="page"  >
-    <scroll-view  class='roll__scroll_view' scroll-y="true" bindscrolltolower="scrollBottom" >         
-        <mark color="#187bbf" title="参会嘉宾"></mark>
-        <view class="">
-             <cover list="{{articleList}}" bind:click="clickNode" mode="guest"></cover>
-             <loading isloading="{{isMore}}" content="暂无更多嘉宾"></loading>
-        </view>
-    </scroll-view> 
+<view class="page"  >       
+    <mark color="#187bbf" title="参会嘉宾"></mark>
+    <view class="">
+            <cover list="{{articleList}}" bind:click="clickNode" mode="guest"></cover>
+            <loading isloading="{{isMore}}" content="暂无更多嘉宾"></loading>
+    </view>
 </view>

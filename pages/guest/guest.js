@@ -7,36 +7,36 @@ var APP = getApp()
 var GP;
 Page({
     data: {
+        isMore:true,
     },
 
     //页面onload
     onLoad: function (options) {
         GP = this
-        action_cover = new ActionCover.ActionCover(GP)
-        GP.updateArticleList()
+        GP.onInit()
     },
 
     //页面show
     onShow() {
-        if (APP.globalData.isLogin == true) {  //已经登录
+        if (GP.data.meetID != wx.getStorageSync(API.KEY_MEET_ID)) {
+            GP.onInit()
         }
     },
 
     onInit: function (options) {
-        GP.updateArticleList()
-    },
-
-    //事件：滚动到底部
-    scrollBottom() {
-        GP.updateArticleList()
-    },
-
-    //更新内容
-    updateArticleList(){
-        action_cover.GetArticleList(
-            API.MEET_GUEST,
-            { "meet_id": 1 },
-        )
+        GP.setData({
+            meetID: wx.getStorageSync(API.KEY_MEET_ID)
+        })
+        API.Request({
+            'url': API.MEET_GUEST,
+            'data': { "meet_id": GP.data.meetID },
+            'success': function (res) {
+                GP.setData({
+                    articleList: res.data.article_list,
+                    isMore:false,
+                })
+            },
+        })    
     },
 
     //点击节点

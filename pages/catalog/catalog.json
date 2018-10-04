@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "cover": "../../components/xx_cover/xx_cover",
+        "loading": "../../components/xx_cover_loading/xx_cover_loading",
+        "mark": "../../components/xx_mark/xx_mark"
+    }
+}

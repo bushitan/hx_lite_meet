@@ -7,14 +7,16 @@ var KEY = require('key.js');
 // var host_url = 'http://127.0.0.1:8000/huaxun/api/';
 // var host_url = 'http://192.168.200.104:8000/huaxun/api/'; 
 
-var host_url = 'https://xcx.308308.com/huaxun_2/api/';
-var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
+// var host_url = 'https://xcx.308308.com/huaxun_2/api/';
+// var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
 
 // var host_url = 'http://127.0.0.1:8000/huaxun_2/api/';
 // var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
 
 // var host_url = 'http://192.168.199.204:8000/huaxun_2/api/';
 // var meet_url = 'http://192.168.199.204:8000/huaxun_2/meet/';
+var host_url = 'http://192.168.200.102:8000/huaxun_2/api/';
+var meet_url = 'http://192.168.200.102:8000/huaxun_2/meet/';
 
 
 // var apiIsLogin = false //是否经登陆
@@ -195,8 +197,26 @@ module.exports = {
     MEET_SIGN_PAY_ORDER: meet_url + 'sign/pay/order/',
     MEET_SIGN_PAY_CHECK: meet_url + 'sign/pay/check/',
     MEET_SIGN_PAY_GET_INFO: meet_url + 'sign/pay/get/info/',
+
+    MEET_CATALOG: meet_url + 'catalog/get_list/',
+    MEET_MAIN_GET_BY_ID: meet_url + 'main/get/meet_id',
+
+
+    //本地存储字段
+    KEY_MEET_ID: "meet_id", //会议ID
     
-    // MEET_SIGN_APY_: meet_url + 'sign/pay/callback/',
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

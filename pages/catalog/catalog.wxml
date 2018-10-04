@@ -1,0 +1,33 @@
+<!--pages/news/news.wxml-->
+<view class="page"  >
+    <mark color="#187bbf" title="会议列表"></mark>
+
+    <block wx:for="{{list}}" wx:key="index">
+        <view class='header'>
+            <view class='box' catchtap='toAgenda' data-meet_id='{{item.meet_id}}'>
+                <view class='title'>
+                    {{item.meet_name}}
+                    <label wx:if="{{item.status == 0}}" class="prepare"> （准备中） </label>
+                    <label wx:elif="{{item.status == 1}}" class='ing'> （正在进行） </label>
+                    <label wx:else class='end'> (已结束) </label>
+                </view>
+                <view class='content'>
+                    <view class='image'>
+                        <image src='{{item.cover_url}}'></image>
+                    </view>
+                    <view class='des'>
+                        <view class='summary'>{{item.des}}</view> 
+                        <view class='more'>详情></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- <view class="">
+            <cover list="{{articleList}}" bind:click="clickNode" mode="guest"></cover>
+            <loading isloading="{{isMore}}" content="暂无更多嘉宾"></loading>
+    </view> -->
+    
+    <loading isloading="{{isMore}}" content="暂无更多会议"></loading>
+</view>
+

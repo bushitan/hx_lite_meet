@@ -23,12 +23,12 @@
     <view class='xx_line__gray'></view>     
     <xx-input name="企业名称" placeholder="请填写企业名称" bindinput='inputCompany' value='{{userInfo.company}}'></xx-input>
     <view class='xx_line__gray'></view>     
-    <xx-input name="纳税识别号" placeholder="请填写纳税识别号" ></xx-input>
+    <xx-input name="纳税识别号" placeholder="请填写纳税识别号"  bindinput='inputTaxpayerNumber' value='{{userInfo.taxpayer_number}}'></xx-input>
 
     <view class='xx_line__gray'></view>     
-    <xx-input name="企业地址" placeholder="请填写企业地址" ></xx-input>
+    <xx-input name="企业地址" placeholder="请填写企业地址" bindinput='inputCompanyAddress' value='{{userInfo.company_address}}'></xx-input>
     <view class='xx_line__gray'></view>     
-    <xx-input name="账户" placeholder="账户" ></xx-input>
+    <xx-input name="账户" placeholder="银行账户" bindinput='inputBankAccount' value='{{userInfo.bank_account}}'></xx-input>
 
 
 </view>

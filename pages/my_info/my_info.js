@@ -25,6 +25,13 @@ Page({
             userInfo: _userInfo
         })
     },
+    inputPhone(e) {
+        var _userInfo = GP.data.userInfo
+        _userInfo.phone = e.detail
+        GP.setData({
+            userInfo: _userInfo
+        })
+    },
     inputCompany(e) {
         var _userInfo = GP.data.userInfo
         _userInfo.company = e.detail
@@ -32,9 +39,26 @@ Page({
             userInfo: _userInfo
         })
     },
-    inputPhone(e) {
+
+    inputTaxpayerNumber(e) {
         var _userInfo = GP.data.userInfo
-        _userInfo.phone = e.detail
+        _userInfo.taxpayer_number = e.detail
+        GP.setData({
+            userInfo: _userInfo
+        })
+    },
+
+    inputCompanyAddress(e) {
+        var _userInfo = GP.data.userInfo
+        _userInfo.company_address = e.detail
+        GP.setData({
+            userInfo: _userInfo
+        })
+    },
+
+    inputBankAccount(e) {
+        var _userInfo = GP.data.userInfo
+        _userInfo.bank_account = e.detail
         GP.setData({
             userInfo: _userInfo
         })
@@ -60,9 +84,9 @@ Page({
             url: API.MEET_SIGN_GET_INFO,
             success: function (res) {
                 console.log(res)
-                // GP.setData({
-                //     userInfo: res.data.dict_attendee
-                // })
+                GP.setData({
+                    userInfo: res.data.dict_attendee
+                })
             }
         })
 
@@ -107,14 +131,27 @@ Page({
             url: API.MEET_SIGN_SET_INFO,
             data: {
                 name: userInfo.name,
-                company: userInfo.company,
                 phone: userInfo.phone,
+                company: userInfo.company,
+                taxpayer_number: userInfo.taxpayer_number,
+                company_address: userInfo.company_address,
+                bank_account: userInfo.bank_account,
             },
             success: function (res) {
                 console.log(res)
-                // GP.setData({
-                //     userInfo: res.data.dict_attendee
-                // })
+                wx.showModal({
+                    title: '更新成功',
+                    success:function(){
+                        wx.navigateBack({                           
+                        })
+                    },
+                })
+            },
+            fail: function (res) {
+                wx.showModal({
+                    title: '更新失败',
+                    content:"请重试",
+                })
             },
             complete:function(res){
                 GP.setData({

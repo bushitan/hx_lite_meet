@@ -10,7 +10,7 @@
  <view class="xx_menu ">
         <view catchtap="" url="" class="xx_menu__node " hover-class="xx_active">
             <image  class="xx_menu__node_icon_lite" src="../../images/icon_location.png"></image>
-            <view class="xx_menu__node_name ">{{mapDict.name}}</view>
+            <view class="xx_menu__node_name ">{{mapDict.hotel}}</view>
             <!-- <view class=" xx_menu__node_access xx_text__right"></view> -->
         </view>
         <view class='xx_line__gray'></view>        
@@ -22,7 +22,7 @@
         <view class='xx_line__gray'></view>
         <view catchtap="toPhone" url="" class="xx_menu__node " hover-class="xx_active">
             <image  class="xx_menu__node_icon_lite" src="../../images/icon_phone.png"></image>
-            <view class="xx_menu__node_name">{{mapDict.phoneNumber}}</view>
+            <view class="xx_menu__node_name">{{mapDict.phone}}</view>
             <view class=" xx_menu__node_access xx_text__right"></view>
         </view>
     </view>
@@ -30,5 +30,4 @@
 <view class='btn'>
     <button type='primary' catchtap='toMap'>导航</button>
 </view>
-<!-- <cover-horizon list="{{coverMatrix[tagIndex]}}" catchclick="toXXArticle"></cover-horizon> -->
 
