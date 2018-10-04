@@ -149,9 +149,10 @@ Page({
 
 
 
-  onShareAppMessage: function () { 
 
-  },
+    onShareAppMessage: function () {
+        return APP.share
+    },
 
     // 到交钱报名
     toSign() {

@@ -4,7 +4,7 @@
      <!-- <view  style='height:10px;' ></view>    -->
 
      <view class='cover' >
-        <image class='cover' src='http://qiniu.308308.com/meet_my.jpg' mode='widthFix'></image>
+        <image class='cover' src='http://qiniu.308308.com/hx_18_2018_06_07_15_01_26.jpg' mode='widthFix'></image>
     </view> 
 
 
@@ -28,10 +28,10 @@
     <view  style='height:10px;' ></view>    
     <xx-navigte icon="{{icon_meet}}" title="我的信息" bindclick="toMyInfo" ></xx-navigte>
 
-    <!-- <view  style='height:10px;' ></view>   
+    <view  style='height:10px;' ></view>   
     <xx-navigte icon="{{icon_meet}}" title="入场券" bindclick="toMyTicket"  wx:if="{{isPay}}"></xx-navigte>
     <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toSign" wx:else></xx-navigte>
-    <view  style='height:10px;' ></view>     -->
+    <view  style='height:10px;' ></view>    
       
     <!-- <xx-navigte icon="{{icon_meet}}" title="扫一扫" bindclick="toScanCode" ></xx-navigte>
 

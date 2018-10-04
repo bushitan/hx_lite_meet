@@ -3,12 +3,14 @@
     <view class='guest '>
         <block wx:for="{{list}}" wx:key="index">
             <view class='node'  catchtap="click" data-index="{{index}}">
+                <!-- <view class='logo' hidden='{{item.cover_url==""}}' > -->
                 <view class='logo'  >
                     <image  src="{{item.cover_url}}" ></image>
                 </view>
                 <view>
                     <view class='title '>{{item.guest_name}}</view>
                     <view class='summery '>{{item.company}}</view>
+                    <view style='height:10px;'></view>
                     <view class='summery '>{{item.introduction}}</view>
                 </view>
             </view>

@@ -10,7 +10,7 @@ Component({
             // observer: '_changeStyle',
         },
         content: {
-            type: object,
+            type: Object,
             value: {},
             // observer: '_changeList',
         },

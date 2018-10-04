@@ -82,12 +82,10 @@ Page({
             GP.getArticleGetListByTag(GP.data.sonTagID)
     },
 
-    onShareAppMessage: function () { 
-        return {
-            title: '快讯',
-            desc: '简讯、资讯信息',
-            path: '/pages/index/index?father_tag_id=' + GP.data.fatherTag.tag_id
-        }
+
+
+    onShareAppMessage: function () {
+        return APP.share
     },
 
 

@@ -60,9 +60,9 @@ Page({
             url: API.MEET_SIGN_GET_INFO,
             success: function (res) {
                 console.log(res)
-                GP.setData({
-                    userInfo: res.data.dict_attendee
-                })
+                // GP.setData({
+                //     userInfo: res.data.dict_attendee
+                // })
             }
         })
 

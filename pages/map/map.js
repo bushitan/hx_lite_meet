@@ -13,6 +13,7 @@ Page({
             // phoneNumber: "020-89338222",
             // address:"阅江西路22号首层"
         },
+        markers:[]
     },
     clickInfo() {
         var url = '../map_info/map_info'
@@ -89,11 +90,22 @@ Page({
             'url': API.MEET_SPOT,
             'data': { "meet_id": 1 },
             'success': function (res) {
+
+                var markers = []
+                markers.push({
+                    // iconPath: "/resources/others.png",
+                    id: 0,
+                    latitude: res.data.map_dict.latitude,
+                    longitude: res.data.map_dict.longitude,
+                    width: 50,
+                    height: 50
+                })
                 GP.setData({
                     // tagIndex: 0,
                     // tagList: res.data.tag_list,
                     // coverMatrix: res.data.cover_matrix,
-                    mapDict:res.data.map_dict
+                    mapDict:res.data.map_dict,
+                    markers: markers,
                 })
             },
         })

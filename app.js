@@ -5,8 +5,8 @@ var g
 var GP
 App({
     share:{
-        title: '华讯会务',
-        desc: '阿拉善大会',
+        title: "2018中国活性炭行业交流会",
+        imageUrl: "../../images/share.jpg",
         path: '/pages/agenda/agenda'
     },
     //全局变量配置
