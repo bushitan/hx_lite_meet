@@ -7,16 +7,16 @@ var KEY = require('key.js');
 // var host_url = 'http://127.0.0.1:8000/huaxun/api/';
 // var host_url = 'http://192.168.200.104:8000/huaxun/api/'; 
 
-// var host_url = 'https://xcx.308308.com/huaxun_2/api/';
-// var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
+var host_url = 'https://xcx.308308.com/huaxun_2/api/';
+var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
 
 // var host_url = 'http://127.0.0.1:8000/huaxun_2/api/';
 // var meet_url = 'http://127.0.0.1:8000/huaxun_2/meet/';
 
 // var host_url = 'http://192.168.199.204:8000/huaxun_2/api/';
 // var meet_url = 'http://192.168.199.204:8000/huaxun_2/meet/';
-var host_url = 'http://192.168.200.102:8000/huaxun_2/api/';
-var meet_url = 'http://192.168.200.102:8000/huaxun_2/meet/';
+// var host_url = 'http://192.168.200.102:8000/huaxun_2/api/';
+// var meet_url = 'http://192.168.200.102:8000/huaxun_2/meet/';
 
 
 // var apiIsLogin = false //是否经登陆

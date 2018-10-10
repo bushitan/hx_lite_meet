@@ -11,7 +11,7 @@
             <cover mode="agenda" list="{{coverMatrix[tagIndex]}}" catchclick="clickAgenda"></cover>
         </view>
         <!-- <image class='ad' src='http://qiniu.308308.com/meet_ad.jpg' mode="aspectFit"></image> -->
-        <image class='ad' src='http://qiniu.308308.com/hx_17_2018_06_07_12_07_18.jpg' mode="widthFix"></image>
+        <!-- <image class='ad' src='http://qiniu.308308.com/hx_17_2018_06_07_12_07_18.jpg' mode="widthFix"></image> -->
        
     </scroll-view> 
 </view>

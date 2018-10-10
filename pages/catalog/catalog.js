@@ -58,6 +58,11 @@ Page({
 
 
     onShareAppMessage: function () {
-        return APP.share
+        // return APP.share
+        return {
+            title: "2018中国活性炭行业交流会",
+            imageUrl: "../../images/share.jpg",
+            path: '/pages/catalog/catalog'
+        }
     },
 })

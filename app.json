@@ -1,8 +1,6 @@
 {
     "pages": [
         "pages/catalog/catalog",
-
-
         "pages/agenda/agenda",
         
         "pages/my_ticket/my_ticket",
