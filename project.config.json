@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -85,6 +85,12 @@
 					"name": "article",
 					"pathName": "pages/article/article",
 					"query": "article_id=1"
+				},
+				{
+					"id": -1,
+					"name": "catalog",
+					"pathName": "pages/catalog/catalog",
+					"query": "meet_id=8"
 				}
 			]
 		}

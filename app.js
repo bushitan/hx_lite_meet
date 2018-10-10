@@ -4,10 +4,15 @@ var KEY = require('utils/key.js');
 var g
 var GP
 App({
-    share:{
-        title: "2018中国活性炭行业交流会",
-        imageUrl: "../../images/share.jpg",
-        path: '/pages/agenda/agenda'
+    // share: {
+    //     title: "2018中国活性炭行业交流会",
+    //     imageUrl: "../../images/share.jpg",
+    //     path: '/pages/agenda/agenda'
+    // },
+    share: {
+        title: "华讯会务",
+        imageUrl: "../../images/logo.png",
+        path: '/pages/catalog/catalog'
     },
     //全局变量配置
     STATIC: {

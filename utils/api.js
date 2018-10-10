@@ -15,8 +15,8 @@ var meet_url = 'https://xcx.308308.com/huaxun_2/meet/';
 
 // var host_url = 'http://192.168.199.204:8000/huaxun_2/api/';
 // var meet_url = 'http://192.168.199.204:8000/huaxun_2/meet/';
-// var host_url = 'http://192.168.200.102:8000/huaxun_2/api/';
-// var meet_url = 'http://192.168.200.102:8000/huaxun_2/meet/';
+// var host_url = 'http://192.168.200.101:8000/huaxun_2/api/';
+// var meet_url = 'http://192.168.200.101:8000/huaxun_2/meet/';
 
 
 // var apiIsLogin = false //是否经登陆
@@ -199,7 +199,8 @@ module.exports = {
     MEET_SIGN_PAY_GET_INFO: meet_url + 'sign/pay/get/info/',
 
     MEET_CATALOG: meet_url + 'catalog/get_list/',
-    MEET_MAIN_GET_BY_ID: meet_url + 'main/get/meet_id',
+    MEET_MAIN_GET_BY_ID: meet_url + 'main/get/meet_id/',
+    MEET_MAIN_CHECK_ALIVE_BY_ID: meet_url + 'main/check_alive/meet_id/',
 
 
     //本地存储字段

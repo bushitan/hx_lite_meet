@@ -8,28 +8,29 @@
     </view> 
 
 
-    <view class="xx_menu ">
-    <view  url="" class="xx_menu__node ">
-        <view class="xx_menu__node_logo" catchtap="clickLogo">
-            <image src="{{userInfo.logo==''? '../../images/click_login.png': userInfo.logo}}"></image>
+    <!-- <view class="xx_menu ">
+        <view  url="" class="xx_menu__node ">
+            <view class="xx_menu__node_logo" catchtap="clickLogo">
+                <image src="{{userInfo.logo==''? '../../images/click_login.png': userInfo.logo}}"></image>
+            </view>
+            <view class="xx_menu__node_name">
+                <view class="xx_text__title">{{userInfo.nick_name}}</view> 
+            </view>
         </view>
-        <view class="xx_menu__node_name">
-                 <view class="xx_text__title">{{userInfo.nick_name}}</view> 
+    </view>  -->
+    
                 <!-- <view class="xx_text__des">ID：{{user_id}}</view> -->
-        </view>
         <!-- <view class="xx_menu__node_descrtion" catchtap='toRosterSelf'>
             <image   class="image_icon" src="{{icon_roster}}" style="margin-right:5px ;"  ></image>
             我的名片
         </view> -->
-        </view>
-    </view> 
     
     <view  style='height:10px;' ></view>    
     <xx-navigte icon="{{icon_meet}}" title="我的信息" bindclick="toMyInfo" ></xx-navigte>
 
-    <view  style='height:10px;' ></view>   
+    <!-- <view  style='height:10px;' ></view>   
     <xx-navigte icon="{{icon_meet}}" title="入场券" bindclick="toMyTicket"  wx:if="{{isPay}}"></xx-navigte>
-    <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toSign" wx:else></xx-navigte>
+    <xx-navigte icon="{{icon_meet}}" title="报名" bindclick="toSign" wx:else></xx-navigte> -->
     <view  style='height:10px;' ></view>    
       
       

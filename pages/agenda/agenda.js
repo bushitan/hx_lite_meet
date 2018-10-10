@@ -97,25 +97,40 @@ Page({
                     tagIndex: 0,
                     tagList: res.data.tag_list,
                     coverMatrix: res.data.cover_matrix,
+                    agendaSwiperList: res.data.swiper_list,
+                    currenMeet: res.data.meet_dict,
                 })
-            },
-        })
-        API.Request({
-            'url': API.MEET_INDEX,
-            'success': function (res) {
-                // APP.globalData.agendaSwiperList = res.data.agenda_swiper_list
-                // APP.globalData.newsSwiperList = res.data.news_swiper_list
-                APP.globalData.currenMeet = res.data.current_meet
-                GP.setData({
-                    agendaSwiperList: res.data.agenda_swiper_list,
-                    // newsSwiperList: res.data.news_swiper_list,
-                    currenMeet: res.data.current_meet,
+                //设置当前会议id
+                var meet_id = res.data.meet_dict.meet_id
+                //设置分享信息
+                APP.share.title = res.data.meet_dict.share_title
+                APP.share.imageUrl = res.data.meet_dict.share_image_url
+                APP.share.path = "/pages/catalog/catalog?meet_id=" + meet_id
 
-                    isLoading:false, 
-                })
+            },
+            complete:function(){
                 wx.hideLoading()
+                GP.setData({
+                    isLoading: false,
+                })
             },
         })
+        // API.Request({
+        //     'url': API.MEET_INDEX,
+        //     'success': function (res) {
+        //         // APP.globalData.agendaSwiperList = res.data.agenda_swiper_list
+        //         // APP.globalData.newsSwiperList = res.data.news_swiper_list
+        //         APP.globalData.currenMeet = res.data.current_meet
+        //         GP.setData({
+        //             agendaSwiperList: res.data.agenda_swiper_list,
+        //             // newsSwiperList: res.data.news_swiper_list,
+        //             currenMeet: res.data.current_meet,
+
+        //             isLoading:false, 
+        //         })
+        //         wx.hideLoading()
+        //     },
+        // })
     },
 
     onShareAppMessage: function () {

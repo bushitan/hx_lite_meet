@@ -14,13 +14,34 @@ Page({
     //页面onload
     onLoad: function (options) {
         GP = this
-
-        if ( wx.getStorageSync(API.KEY_MEET_ID ) != "" )
-            wx.switchTab({
-                url: '/pages/agenda/agenda',
-            })
+        var meet_id
+        if (options.hasOwnProperty('meet_id') ) 
+            meet_id = options.meet_id
         else
-            GP.onInit()
+            meet_id = wx.getStorageSync(API.KEY_MEET_ID) || -1
+        API.Request({
+            'url': API.MEET_MAIN_CHECK_ALIVE_BY_ID,
+            'data': { "meet_id": meet_id},
+            'success': function (res) {
+                if (res.data.is_alive == true) {
+                    wx.setStorageSync(API.KEY_MEET_ID, meet_id) 
+                    wx.switchTab({
+                        url: '/pages/agenda/agenda',
+                    })
+                }else{
+                    wx.setStorageSync(API.KEY_MEET_ID,"") 
+                    GP.onInit()
+                }
+            },
+            "fail":function(){
+                GP.onInit()
+            }
+        })
+            // MEET_MAIN_CHECK_ALIVE_BY_ID
+        // }
+            
+        // else
+        //     GP.onInit()
         
     },
 
@@ -31,8 +52,6 @@ Page({
     },
 
     onInit: function (options) {
-        
-
         API.Request({
             url: API.MEET_CATALOG,
             success: function (res) {
@@ -60,8 +79,8 @@ Page({
     onShareAppMessage: function () {
         // return APP.share
         return {
-            title: "2018中国活性炭行业交流会",
-            imageUrl: "../../images/share.jpg",
+            title: "华讯会务",
+            imageUrl: "../../images/logo.png",
             path: '/pages/catalog/catalog'
         }
     },
