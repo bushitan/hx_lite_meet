@@ -18,7 +18,8 @@ Page({
         if (options.hasOwnProperty('meet_id') ) 
             meet_id = options.meet_id
         else
-            meet_id = wx.getStorageSync(API.KEY_MEET_ID) || -1
+            // meet_id = wx.getStorageSync(API.KEY_MEET_ID) || -1
+            meet_id = -1
         API.Request({
             'url': API.MEET_MAIN_CHECK_ALIVE_BY_ID,
             'data': { "meet_id": meet_id},
