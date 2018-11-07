@@ -2,32 +2,92 @@
 <view class="page"  >
     <mark color="#187bbf" title="会议列表"></mark>
 
-    <block wx:for="{{list}}" wx:key="index">
-        <view class='header'>
-            <view class='box' catchtap='toAgenda' data-meet_id='{{item.meet_id}}'>
-                <view class='title'>
-                    {{item.meet_name}}
-                    <label wx:if="{{item.status == 0}}" class="prepare"> （准备中） </label>
-                    <label wx:elif="{{item.status == 1}}" class='ing'> （正在进行） </label>
-                    <label wx:else class='end'> (已结束) </label>
-                </view>
-                <view class='content'>
-                    <view class='image'>
-                        <image src='{{item.cover_url}}'></image>
+    <view hidden="{{ingMeet.length==0}}">
+        <template is="cover" 
+        data="{{list:ingMeet, content:'正在进行',color:'#2ebe60'}}" ></template>
+    </view>
+    <view hidden="{{preMeet.length==0}}">
+        <template is="cover" 
+        data="{{list:preMeet, content:'即将开始',color:'#187bbf'}}" ></template>
+    </view>
+    <view hidden="{{endMeet.length==0}}">
+        <template is="cover" 
+        data="{{list:endMeet, content:'已结束',color:'#999999'}}" ></template>
+    </view>
+
+    <template name="cover">
+        <catalog-mark content="{{content}}" color="{{color}}"></catalog-mark>
+        <block wx:for="{{list}}" wx:key="index">
+            <view class='header'>
+                <view class='box' catchtap='toAgenda' data-meet_id='{{item.meet_id}}'>
+                    <view class='title'>
+                        {{item.meet_name}}
                     </view>
-                    <view class='des'>
-                        <view class='summary'>{{item.des}}</view> 
-                        <view class='more'>详情></view>
+                    <view class='content'>
+                        <view class='image'>
+                            <image src='{{item.cover_url}}'></image>
+                        </view>
+                        <view class='des'>
+                            <view class='summary'>{{item.des}}</view> 
+                            <view class='more'>详情></view>
+                        </view>
                     </view>
                 </view>
             </view>
-        </view>
+        </block>
+    </template>
+
+    <!-- <catalog-mark content="即将开始" color="#187bbf"></catalog-mark>
+    <block wx:for="{{list}}" wx:key="index">
+        <block wx:if="{{item.status == 0}}">
+            <view class='header'>
+                <view class='box' catchtap='toAgenda' data-meet_id='{{item.meet_id}}'>
+                    <view class='title'>
+                        {{item.meet_name}}
+                    </view>
+                    <view class='content'>
+                        <view class='image'>
+                            <image src='{{item.cover_url}}'></image>
+                        </view>
+                        <view class='des'>
+                            <view class='summary'>{{item.des}}</view> 
+                            <view class='more'>详情></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
     </block>
+    <catalog-mark content="已结束" color="#999999"></catalog-mark>
+    <block wx:for="{{list}}" wx:key="index">
+        <block wx:if="{{item.status == 2}}">
+            <view class='header'>
+                <view class='box' catchtap='toAgenda' data-meet_id='{{item.meet_id}}'>
+                    <view class='title'>
+                        {{item.meet_name}}
+                    </view>
+                    <view class='content'>
+                        <view class='image'>
+                            <image src='{{item.cover_url}}'></image>
+                        </view>
+                        <view class='des'>
+                            <view class='summary'>{{item.des}}</view> 
+                            <view class='more'>详情></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </block> -->
+
     <!-- <view class="">
             <cover list="{{articleList}}" bind:click="clickNode" mode="guest"></cover>
             <loading isloading="{{isMore}}" content="暂无更多嘉宾"></loading>
     </view> -->
-    
-    <loading isloading="{{isMore}}" content="暂无更多会议"></loading>
+
+    <view hidden='{{!isMore}}'>
+        <loading isloading="{{isMore}}" content="暂无更多会议"></loading>
+    </view>
+    <view style='height:40px;'></view>
 </view>
 

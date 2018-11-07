@@ -8,7 +8,10 @@ var GP;
 Page({
     data: {
         list: [],
-        isMore:true
+        isMore:true,
+        preMeet: [],
+        ingMeet: [],
+        endMeet: [],
     },
 
     //页面onload
@@ -61,9 +64,31 @@ Page({
                     list: res.data.catalog_list,
                     isMore:false,
                 })
+                GP.meetClassify()
+
             }
         })
     },
+    // 为会务分类
+    meetClassify(){
+        var list = GP.data.list
+        var pre = [],ing=[],end=[]
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].status == 0)
+                pre.push(list[i])
+            if (list[i].status == 1)
+                ing.push(list[i])
+            if (list[i].status == 2)
+                end.push(list[i])
+        }
+        // ing = []
+        GP.setData({
+            preMeet: pre,
+            ingMeet: ing,
+            endMeet: end,
+        })
+    },
+
 
     //点击节点
     toAgenda(e) {
