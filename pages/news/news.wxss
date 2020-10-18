@@ -68,3 +68,14 @@ swiper image{
     padding: 8px 12px ; 
     border-right:1rpx solid #eee;
 }
+
+
+.btn_box{
+    position: fixed;
+    bottom: 10px;
+    right:0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+}

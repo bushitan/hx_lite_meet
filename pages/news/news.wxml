@@ -7,4 +7,8 @@
         <cover bindclick="toXXArticle" list="{{articleList}}" mode="news"></cover>
         <loading isloading="{{isMore}}" content="暂无更多新闻"></loading>
     <!-- </scroll-view>  -->
+
+    <view class="btn_box" >
+        <button class="btn" size="mini" catchtap="toCatalog">选择会议</button>
+    </view>
 </view>

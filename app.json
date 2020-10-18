@@ -2,7 +2,6 @@
     "pages": [
         "pages/catalog/catalog",
         "pages/agenda/agenda",
-        
         "pages/my_ticket/my_ticket",
         "pages/my_info/my_info",
         "pages/my/my",
@@ -17,9 +16,7 @@
         "pages/map/map",
         "pages/guest/guest",
         "pages/roster_self/roster_self",
-        
         "pages/ztest/ztest"
-        
     ],
     "window": {
         "navigationBarBackgroundColor": "#151515",
@@ -35,6 +32,12 @@
         "borderStyle": "white",
         "list": [
             {
+                "pagePath": "pages/news/news",
+                "text": "新闻",
+                "iconPath": "images/meet_unselect.png",
+                "selectedIconPath": "images/meet_select.png"
+            },
+            {
                 "pagePath": "pages/agenda/agenda",
                 "text": "日程",
                 "iconPath": "images/info_unselect.png",
@@ -45,12 +48,6 @@
                 "text": "嘉宾",
                 "iconPath": "images/match_unselect1.png",
                 "selectedIconPath": "images/match_select1.png"
-            },
-            {
-                "pagePath": "pages/news/news",
-                "text": "新闻",
-                "iconPath": "images/meet_unselect.png",
-                "selectedIconPath": "images/meet_select.png"
             },
             {
                 "pagePath": "pages/map/map",
@@ -66,10 +63,17 @@
             }
         ]
     },
+    "plugins": {
+        "live-player-plugin": {
+            "version": "1.2.1",
+            "provider": "wx2b03c6e691cd7370"
+        }
+    },
     "networkTimeout": {
         "request": 30000,
         "uploadFile": 30000,
         "downloadFile": 15000
     },
-    "debug": true
+    "debug": true,
+    "sitemapLocation": "sitemap.json"
 }

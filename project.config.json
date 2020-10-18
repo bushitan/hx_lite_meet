@@ -12,6 +12,8 @@
 	"appid": "wx3efaa3a88f42df6b",
 	"projectname": "%E5%8D%8E%E8%AE%AF%E4%BC%9A%E5%8A%A1",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -27,6 +29,10 @@
 		},
 		"game": {
 			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -91,6 +97,12 @@
 					"name": "catalog",
 					"pathName": "pages/catalog/catalog",
 					"query": "meet_id=8"
+				},
+				{
+					"id": -1,
+					"name": "pages/news/news",
+					"pathName": "pages/news/news",
+					"scene": null
 				}
 			]
 		}

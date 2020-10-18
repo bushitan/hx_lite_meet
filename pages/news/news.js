@@ -15,9 +15,15 @@ Page({
     toXXArticle(e) {
         var index = e.detail  //索引
         var article_id = GP.data.articleList[index].article_id
-        wx.navigateTo({
-            url: '../article/article?article_id=' + article_id,
-        })
+        var roomId = GP.data.articleList[index].footer
+        if (article_id)
+            wx.navigateTo({
+                url: '../article/article?article_id=' + article_id,
+            })
+        else
+            wx.navigateTo({
+                url: `plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=${roomId}`
+            })
     },
 
     /**
@@ -56,6 +62,14 @@ Page({
             },
         })
 
+    },
+
+    // 返回主页
+    toCatalog() {
+        wx.setStorageSync(API.KEY_MEET_ID, "") //清空会议
+        wx.redirectTo({
+            url: '/pages/catalog/catalog',
+        })
     },
 
     onShareAppMessage: function () {

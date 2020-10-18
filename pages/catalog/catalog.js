@@ -96,7 +96,8 @@ Page({
         // console.log()
         wx.setStorageSync(API.KEY_MEET_ID, e.currentTarget.dataset.meet_id)
         wx.switchTab({
-            url: '/pages/agenda/agenda',
+            // url: '/pages/agenda/agenda',
+            url: '/pages/news/news',
         })
     },
 
